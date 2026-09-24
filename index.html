@@ -1,19 +1,15 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CazaChollos - Grandes ofertas</title>
 
 <style>
-
-/* =========================
-   ESTILOS GENERALES
-   ========================= */
 
 * {
     box-sizing: border-box;
@@ -27,32 +23,24 @@ body {
     color: #222;
 }
 
-
-/* =========================
-   CABECERA
-   ========================= */
-
 header {
     background: #111;
     color: white;
-    padding: 20px;
+    padding: 28px 20px;
     text-align: center;
 }
 
 header h1 {
-    font-size: 36px;
-    margin-bottom: 5px;
+    font-size: 42px;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
 }
 
 header p {
-    font-size: 17px;
-    color: #ccc;
+    font-size: 18px;
+    color: #ffcc00;
+    font-weight: bold;
 }
-
-
-/* =========================
-   MENÚ
-   ========================= */
 
 nav {
     background: #ffcc00;
@@ -71,11 +59,6 @@ nav a:hover {
     text-decoration: underline;
 }
 
-
-/* =========================
-   PRESENTACIÓN
-   ========================= */
-
 .hero {
     background: white;
     padding: 45px 20px;
@@ -92,19 +75,16 @@ nav a:hover {
     color: #666;
 }
 
-
-/* =========================
-   PÁGINA EN CONSTRUCCIÓN
-   ========================= */
-
 .construccion {
     background: #111;
     color: white;
     margin: 30px auto;
     max-width: 1100px;
-    padding: 35px 20px;
+    padding: 45px 20px;
     text-align: center;
     border-radius: 10px;
+    border: 3px solid #ffcc00;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
 }
 
 .construccion h2 {
@@ -115,12 +95,8 @@ nav a:hover {
 .construccion p {
     font-size: 18px;
     color: #ccc;
+    margin-bottom: 8px;
 }
-
-
-/* =========================
-   CONTENEDORES
-   ========================= */
 
 .contenedor {
     max-width: 1100px;
@@ -132,10 +108,12 @@ nav a:hover {
     margin-bottom: 20px;
 }
 
-
-/* =========================
-   PRODUCTOS
-   ========================= */
+.subtitulo-express {
+    font-size: 18px;
+    color: #666;
+    margin-top: -10px;
+    margin-bottom: 25px;
+}
 
 .productos {
     display: grid;
@@ -149,6 +127,18 @@ nav a:hover {
     padding: 20px;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    position: relative;
+}
+
+.producto .etiqueta {
+    display: inline-block;
+    background: #ffcc00;
+    color: #111;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-bottom: 15px;
 }
 
 .producto .imagen {
@@ -167,23 +157,31 @@ nav a:hover {
 
 .producto h3 {
     margin-bottom: 10px;
+    font-size: 21px;
 }
 
+.producto p {
+    color: #666;
+}
 
-/* =========================
-   PRECIOS
-   ========================= */
+.precio-anterior {
+    color: #888;
+    text-decoration: line-through;
+    font-size: 16px;
+    margin-top: 12px;
+}
 
 .precio {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
-    margin: 12px 0;
+    margin: 5px 0 10px 0;
 }
 
-
-/* =========================
-   BOTONES
-   ========================= */
+.comprobado {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 15px;
+}
 
 .boton {
     display: inline-block;
@@ -198,11 +196,6 @@ nav a:hover {
 .boton:hover {
     background: #e6b800;
 }
-
-
-/* =========================
-   CATEGORÍAS
-   ========================= */
 
 .seccion-categoria {
     margin-top: 50px;
@@ -230,11 +223,6 @@ nav a:hover {
     margin-bottom: 20px;
 }
 
-
-/* =========================
-   PIE DE PÁGINA
-   ========================= */
-
 footer {
     margin-top: 40px;
     background: #111;
@@ -247,263 +235,277 @@ footer {
 
 </head>
 
+
 <body>
 
-<!-- =========================
-     CABECERA
-     ========================= -->
 
 <header>
 
-```
-<h1>🛒 CazaChollos</h1>
+    <h1>🛒 CazaChollos</h1>
 
-<p>Grandes chollos, precios increíbles</p>
-```
+    <p>Los mejores chollos, encontrados para ti</p>
 
 </header>
 
-<!-- =========================
-     MENÚ
-     ========================= -->
 
 <nav>
 
-```
-<a href="#inicio">Inicio</a>
+    <a href="index.html">Inicio</a>
 
-<a href="#gaming">Gaming</a>
+    <a href="gaming.html">Gaming</a>
 
-<a href="#moda">Moda</a>
+    <a href="moda.html">Moda</a>
 
-<a href="#tecnologia">Tecnología</a>
-```
+    <a href="tecnologia.html">Tecnología</a>
 
 </nav>
 
-<!-- =========================
-     PRESENTACIÓN
-     ========================= -->
 
 <section class="hero">
 
-```
-<h2>🔥 Los mejores chollos, en un solo sitio</h2>
+    <h2>🔥 Los mejores chollos, en un solo sitio</h2>
 
-<p>
-    Encontramos ofertas interesantes para que tú no tengas que buscarlas.
-</p>
-```
+    <p>
+        Encontramos ofertas interesantes para que tú no tengas que buscarlas.
+    </p>
 
 </section>
 
-<!-- =========================
-     PÁGINA EN CONSTRUCCIÓN
-     ========================= -->
 
 <section class="construccion">
 
-```
-<h2>🚧 Página en construcción</h2>
+    <h2>🚧 ¡Estamos preparando algo grande!</h2>
 
-<p>
-    Estamos preparando CazaChollos para ofrecerte los mejores chollos
-    de Gaming, Moda y Tecnología.
-</p>
-```
+    <p>CazaChollos está en construcción.</p>
 
-</section>
+    <p>
+        Estamos seleccionando las mejores ofertas de Gaming,
+        Moda, Tecnología y mucho más.
+    </p>
 
-<!-- =========================
-     CHOLLOS EXPRESS
-     ========================= -->
-
-<section class="contenedor" id="inicio">
-
-```
-<h2>⚡ Chollos Express - Envío en 24h</h2>
-
-
-<div class="productos">
-
-
-    <!-- GAMING -->
-
-    <div class="categoria">
-
-        <h3>🎮 Gaming</h3>
-
-        <p>
-            Mandos, auriculares, juegos y accesorios gaming.
-        </p>
-
-        <a href="#gaming" class="boton">Ver chollos</a>
-
-    </div>
-
-
-    <!-- MODA -->
-
-    <div class="categoria">
-
-        <h3>👕 Moda</h3>
-
-        <p>
-            Sudaderas, ropa de marca, zapatillas y más.
-        </p>
-
-        <a href="#moda" class="boton">Ver chollos</a>
-
-    </div>
-
-
-    <!-- TECNOLOGÍA -->
-
-    <div class="categoria">
-
-        <h3>💻 Tecnología</h3>
-
-        <p>
-            Móviles, informática, electrónica y accesorios.
-        </p>
-
-        <a href="#tecnologia" class="boton">Ver chollos</a>
-
-    </div>
-
-
-</div>
-```
+    <p>
+        🔥 Muy pronto encontrarás aquí auténticos chollos.
+    </p>
 
 </section>
 
-<!-- =========================
-     ÚLTIMOS CHOLLOS
-     ========================= -->
+
+<section class="contenedor">
+
+    <h2>⚡ Chollos Express</h2>
+
+    <p class="subtitulo-express">
+        Productos que tenemos disponibles y preparados para enviar en 24h.
+    </p>
+
+    <div class="productos">
+
+
+        <div class="categoria">
+
+            <h3>🎮 Gaming</h3>
+
+            <p>
+                Mandos, auriculares, juegos y accesorios gaming.
+            </p>
+
+            <a href="gaming.html" class="boton">
+                Ver chollos
+            </a>
+
+        </div>
+
+
+        <div class="categoria">
+
+            <h3>👕 Moda</h3>
+
+            <p>
+                Sudaderas, ropa de marca, zapatillas y más.
+            </p>
+
+            <a href="moda.html" class="boton">
+                Ver chollos
+            </a>
+
+        </div>
+
+
+        <div class="categoria">
+
+            <h3>💻 Tecnología</h3>
+
+            <p>
+                Móviles, informática, electrónica y accesorios.
+            </p>
+
+            <a href="tecnologia.html" class="boton">
+                Ver chollos
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
 
 <section class="contenedor seccion-categoria">
 
-```
-<h2>🔥 Últimos chollos</h2>
+    <h2>🔥 Últimos chollos</h2>
+
+    <div class="productos">
 
 
-<div class="productos">
+        <div class="producto">
 
+            <div class="etiqueta">
+                🔥 OFERTA
+            </div>
 
-    <div class="producto">
+            <div class="imagen">
 
-        <div class="imagen">
+                <img
+                    src="Auriculares PS.jpeg"
+                    alt="Auriculares Gaming"
+                >
 
-            <img src="Auriculares PS.jpeg" alt="Auriculares Gaming">
+            </div>
+
+            <h3>
+                Auriculares Gaming
+            </h3>
+
+            <p>
+                Sonido envolvente para tus partidas.
+            </p>
+
+            <div class="precio-anterior">
+                39,99 €
+            </div>
+
+            <div class="precio">
+                29,99 €
+            </div>
+
+            <div class="comprobado">
+                Precio comprobado al publicar
+            </div>
+
+            <a href="#" class="boton">
+                🔥 VER OFERTA
+            </a>
 
         </div>
 
-        <h3>Auriculares Gaming</h3>
 
-        <p>
-            Sonido envolvente para tus partidas.
-        </p>
+        <div class="producto">
 
-        <div class="precio">29,99 €</div>
+            <div class="etiqueta">
+                🔥 OFERTA
+            </div>
 
-        <a href="#" class="boton">Ver chollo</a>
+            <div class="imagen">
 
-    </div>
+                <img
+                    src="Mando PS5.jpeg"
+                    alt="Mando PlayStation"
+                >
 
+            </div>
 
-    <div class="producto">
+            <h3>
+                Mando PlayStation
+            </h3>
 
-        <div class="imagen">
+            <p>
+                Mando compatible con PlayStation.
+            </p>
 
-            <img src="Mando PS5.jpeg" alt="Mando PlayStation">
+            <div class="precio-anterior">
+                59,99 €
+            </div>
+
+            <div class="precio">
+                49,99 €
+            </div>
+
+            <div class="comprobado">
+                Precio comprobado al publicar
+            </div>
+
+            <a href="#" class="boton">
+                🔥 VER OFERTA
+            </a>
 
         </div>
 
-        <h3>Mando PlayStation</h3>
-
-        <p>
-            Mando compatible con PlayStation.
-        </p>
-
-        <div class="precio">49,99 €</div>
-
-        <a href="#" class="boton">Ver chollo</a>
 
     </div>
 
+</section>
 
-</div>
-```
+
+<section class="contenedor seccion-categoria">
+
+    <h2>🎮 GAMING</h2>
+
+    <p>
+        Descubre las mejores ofertas en gaming.
+    </p>
+
+    <br>
+
+    <a href="gaming.html" class="boton">
+        ENTRAR EN GAMING
+    </a>
 
 </section>
 
-<!-- =========================
-     GAMING
-     ========================= -->
 
-<section class="contenedor seccion-categoria" id="gaming">
+<section class="contenedor seccion-categoria">
 
-```
-<h2>🎮 GAMING</h2>
+    <h2>👕 MODA</h2>
 
-<p>
-    Descubre las mejores ofertas en gaming.
-</p>
+    <p>
+        Descubre las mejores ofertas en moda.
+    </p>
 
-<a href="gaming.html" class="boton">ENTRAR EN GAMING</a>
-```
+    <br>
 
-</section>
-
-<!-- =========================
-     MODA
-     ========================= -->
-
-<section class="contenedor seccion-categoria" id="moda">
-
-```
-<h2>👕 MODA</h2>
-
-<p>
-    Descubre las mejores ofertas en moda.
-</p>
-
-<a href="#" class="boton">ENTRAR EN MODA</a>
-```
+    <a href="moda.html" class="boton">
+        ENTRAR EN MODA
+    </a>
 
 </section>
 
-<!-- =========================
-     TECNOLOGÍA
-     ========================= -->
 
-<section class="contenedor seccion-categoria" id="tecnologia">
+<section class="contenedor seccion-categoria">
 
-```
-<h2>💻 TECNOLOGÍA</h2>
+    <h2>💻 TECNOLOGÍA</h2>
 
-<p>
-    Descubre las mejores ofertas en tecnología.
-</p>
+    <p>
+        Descubre las mejores ofertas de tecnología.
+    </p>
 
-<a href="#" class="boton">ENTRAR EN TECNOLOGÍA</a>
-```
+    <br>
+
+    <a href="tecnologia.html" class="boton">
+        ENTRAR EN TECNOLOGÍA
+    </a>
 
 </section>
 
-<!-- =========================
-     PIE DE PÁGINA
-     ========================= -->
 
 <footer>
 
-```
-<p>
-    © 2026 CazaChollos - Todos los derechos reservados
-</p>
-```
+    <p>
+        © 2026 CazaChollos - Todos los derechos reservados
+    </p>
 
 </footer>
+
 
 </body>
 

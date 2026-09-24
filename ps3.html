@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Juegos PS3 - CazaChollos</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #ffd400;
+        }
+
+        header p {
+            margin: 8px 0 0;
+        }
+
+        nav {
+            background: #ffd400;
+            text-align: center;
+            padding: 12px;
+        }
+
+        nav a {
+            color: #111;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+
+        .hero {
+            background: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .hero h2 {
+            margin: 0 0 10px;
+        }
+
+        .productos {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .producto {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .producto img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .producto h3 {
+            margin: 15px 0 10px;
+        }
+
+        .precio {
+            font-size: 22px;
+            font-weight: bold;
+            color: #111;
+        }
+
+        .boton {
+            display: inline-block;
+            background: #ffd400;
+            color: #111;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .boton:hover {
+            background: #e6bd00;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🛒 CazaChollos</h1>
+    <p>Los mejores chollos, encontrados para ti</p>
+</header>
+
+<nav>
+    <a href="index.html">Inicio</a>
+    <a href="gaming.html">Gaming</a>
+    <a href="moda.html">Moda</a>
+    <a href="tecnologia.html">Tecnología</a>
+</nav>
+
+<section class="hero">
+    <h2>🎮 Juegos PS3</h2>
+    <p>Juegos de PlayStation 3 disponibles en Wallapop.</p>
+</section>
+
+<section class="productos" id="listaProductos"></section>
+
+<script src="productos.js"></script>
+
+<script>
+
+const lista = document.getElementById("listaProductos");
+
+const productosPS3 = productos.filter(function(producto) {
+    return producto.categoria === "ps3";
+});
+
+productosPS3.forEach(function(producto) {
+
+    lista.innerHTML += `
+        <div class="producto">
+
+            <img src="imagenes/gaming/${producto.imagen}" alt="${producto.nombre}">
+
+            <h3>${producto.nombre}</h3>
+
+            <p class="precio">${producto.precio}</p>
+
+            <a class="boton" href="${producto.enlace}" target="_blank">
+                🟡 VER EN WALLAPOP
+            </a>
+
+        </div>
+    `;
+
+});
+
+</script>
+
+<footer>
+    © 2026 CazaChollos - Todos los derechos reservados
+</footer>
+
+</body>
+</html>
