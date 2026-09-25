@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CazaChollos - Productos</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; color: #222; background: #f4f4f4; }
+header { background: #111; color: white; text-align: center; padding: 25px 16px; }
+header h1 { color: #ffd400; margin: 0 0 8px; }
+nav { background: #ffd400; text-align: center; padding: 12px; }
+nav a { color: #111; text-decoration: none; font-weight: bold; margin: 0 12px; }
+.hero { background: white; text-align: center; padding: 28px 16px; }
+.hero h2 { margin: 0 0 10px; }
+.productos { max-width: 1100px; margin: 28px auto; padding: 0 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.producto, .vacio { background: white; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+.producto img { width: 100%; height: 190px; object-fit: contain; margin-bottom: 12px; }
+.producto h3 { margin: 8px 0; }
+.precio { font-size: 23px; font-weight: bold; margin: 12px 0; }
+.boton { display: inline-block; background: #ffd400; color: #111; text-decoration: none; padding: 11px 17px; border-radius: 6px; font-weight: bold; }
+.vacio { grid-column: 1 / -1; color: #666; }
+footer { background: #111; color: #aaa; text-align: center; padding: 22px; margin-top: 35px; }
+</style>
+</head>
+<body>
+<header><h1>🛒 CazaChollos</h1><p>Los mejores chollos, encontrados para ti</p></header>
+<nav>
+    <a href="index.html">Inicio</a>
+    <a href="gaming.html">Gaming</a>
+    <a href="moda.html">Moda</a>
+    <a href="tecnologia.html">Tecnología</a>
+</nav>
+<section class="hero"><h2 id="titulo">Productos</h2><p id="descripcion">Artículos seleccionados de CazaChollos.</p></section>
+<main class="productos" id="listaProductos"></main>
+<footer>© 2026 CazaChollos - Todos los derechos reservados</footer>
+<script src="productos.js"></script>
+<script>
+const parametros = new URLSearchParams(window.location.search);
+const categoria = (parametros.get("categoria") || "").toLowerCase();
+const subcategoria = (parametros.get("subcategoria") || "").toLowerCase();
+const seccion = (parametros.get("seccion") || "").toLowerCase();
+const titulos = {
+    gaming: "Gaming", moda: "Moda", tecnologia: "Tecnología",
+    auriculares: "Auriculares", mandos: "Mandos", consolas: "Consolas", juegos: "Juegos", accesorios: "Accesorios",
+    sudaderas: "Sudaderas", zapatillas: "Zapatillas", ropa: "Ropa", marcas: "Marcas",
+    moviles: "Móviles", informatica: "Informática", electronica: "Electrónica", gadgets: "Gadgets",
+    ps3: "Juegos PS3", ps4: "Juegos PS4", ps5: "Juegos PS5", pc: "Juegos PC"
+};
+const titulo = seccion ? (titulos[seccion] || seccion) : (titulos[subcategoria] || titulos[categoria] || "Productos");
+document.title = `CazaChollos - ${titulo}`;
+document.getElementById("titulo").textContent = titulo;
+document.getElementById("descripcion").textContent = "Productos disponibles en CazaChollos.";
+
+const lista = document.getElementById("listaProductos");
+const catalogo = typeof productos !== "undefined" && Array.isArray(productos) ? productos : [];
+const productosFiltrados = catalogo.filter((producto) => {
+    // Compatibilidad con los juegos PS3 antiguos, que guardaban categoria: "ps3".
+    if (categoria === "gaming" && subcategoria === "juegos" && seccion === "ps3" && producto.categoria === "ps3") return true;
+    return producto.categoria === categoria && producto.subcategoria === subcategoria && (!seccion || producto.seccion === seccion);
+});
+
+function textoBoton(producto) {
+    const plataforma = (producto.plataforma || "").toLowerCase();
+    if (plataforma === "vinted") return "Ver en Vinted";
+    if (plataforma === "wallapop") return "Ver en Wallapop";
+    try {
+        const dominio = new URL(producto.enlace).hostname.toLowerCase();
+        if (dominio.includes("vinted")) return "Ver en Vinted";
+        if (dominio.includes("wallapop")) return "Ver en Wallapop";
+    } catch { /* Se conserva el texto genérico si no se reconoce el enlace. */ }
+    return "Ver anuncio";
+}
+
+function crearTexto(tag, valor, clase) {
+    const elemento = document.createElement(tag);
+    elemento.textContent = valor;
+    if (clase) elemento.className = clase;
+    return elemento;
+}
+
+if (!categoria || !subcategoria) {
+    lista.appendChild(crearTexto("p", "No se ha indicado una categoría válida.", "vacio"));
+} else if (productosFiltrados.length === 0) {
+    lista.appendChild(crearTexto("p", "Todavía no hay artículos en esta categoría.", "vacio"));
+} else {
+    productosFiltrados.forEach((producto) => {
+        const tarjeta = document.createElement("article");
+        tarjeta.className = "producto";
+        if (producto.imagen) {
+            const imagen = document.createElement("img");
+            imagen.src = producto.imagen;
+            imagen.alt = producto.nombre || "Producto";
+            imagen.loading = "lazy";
+            tarjeta.appendChild(imagen);
+        }
+        tarjeta.appendChild(crearTexto("h3", producto.nombre || "Producto"));
+        tarjeta.appendChild(crearTexto("p", producto.precio || "Precio no indicado", "precio"));
+        if (producto.enlace) {
+            const enlace = document.createElement("a");
+            enlace.className = "boton";
+            enlace.href = producto.enlace;
+            enlace.target = "_blank";
+            enlace.rel = "noopener noreferrer";
+            enlace.textContent = textoBoton(producto);
+            tarjeta.appendChild(enlace);
+        }
+        lista.appendChild(tarjeta);
+    });
+}
+</script>
+</body>
+</html>

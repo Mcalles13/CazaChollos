@@ -1,512 +1,234 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>CazaChollos - Grandes ofertas</title>
-
 <style>
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    color: #222;
-}
-
-header {
-    background: #111;
-    color: white;
-    padding: 28px 20px;
-    text-align: center;
-}
-
-header h1 {
-    font-size: 42px;
-    margin-bottom: 8px;
-    letter-spacing: 1px;
-}
-
-header p {
-    font-size: 18px;
-    color: #ffcc00;
-    font-weight: bold;
-}
-
-nav {
-    background: #ffcc00;
-    padding: 12px;
-    text-align: center;
-}
-
-nav a {
-    color: #111;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-.hero {
-    background: white;
-    padding: 45px 20px;
-    text-align: center;
-}
-
-.hero h2 {
-    font-size: 30px;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 18px;
-    color: #666;
-}
-
-.construccion {
-    background: #111;
-    color: white;
-    margin: 30px auto;
-    max-width: 1100px;
-    padding: 45px 20px;
-    text-align: center;
-    border-radius: 10px;
-    border: 3px solid #ffcc00;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-}
-
-.construccion h2 {
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-.construccion p {
-    font-size: 18px;
-    color: #ccc;
-    margin-bottom: 8px;
-}
-
-.contenedor {
-    max-width: 1100px;
-    margin: 30px auto;
-    padding: 0 20px;
-}
-
-.contenedor h2 {
-    margin-bottom: 20px;
-}
-
-.subtitulo-express {
-    font-size: 18px;
-    color: #666;
-    margin-top: -10px;
-    margin-bottom: 25px;
-}
-
-.productos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.producto {
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-    position: relative;
-}
-
-.producto .etiqueta {
-    display: inline-block;
-    background: #ffcc00;
-    color: #111;
-    font-weight: bold;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-    margin-bottom: 15px;
-}
-
-.producto .imagen {
-    height: 180px;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.producto .imagen img {
-    max-width: 100%;
-    max-height: 180px;
-    object-fit: contain;
-}
-
-.producto h3 {
-    margin-bottom: 10px;
-    font-size: 21px;
-}
-
-.producto p {
-    color: #666;
-}
-
-.precio-anterior {
-    color: #888;
-    text-decoration: line-through;
-    font-size: 16px;
-    margin-top: 12px;
-}
-
-.precio {
-    font-size: 28px;
-    font-weight: bold;
-    margin: 5px 0 10px 0;
-}
-
-.comprobado {
-    font-size: 13px;
-    color: #888;
-    margin-bottom: 15px;
-}
-
-.boton {
-    display: inline-block;
-    background: #ffcc00;
-    color: #111;
-    padding: 10px 18px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.boton:hover {
-    background: #e6b800;
-}
-
-.seccion-categoria {
-    margin-top: 50px;
-}
-
-.seccion-categoria h2 {
-    margin-bottom: 20px;
-}
-
-.categoria {
-    background: white;
-    border-radius: 10px;
-    padding: 30px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-}
-
-.categoria h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.categoria p {
-    color: #666;
-    margin-bottom: 20px;
-}
-
-footer {
-    margin-top: 40px;
-    background: #111;
-    color: #aaa;
-    text-align: center;
-    padding: 25px;
-}
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #f4f4f4; color: #222; }
+header { background: #111; color: white; padding: 28px 20px; text-align: center; }
+header h1 { font-size: 42px; margin-bottom: 8px; letter-spacing: 1px; }
+header p { font-size: 18px; color: #ffcc00; font-weight: bold; }
+nav { background: #ffcc00; padding: 12px; text-align: center; }
+nav a { color: #111; text-decoration: none; margin: 0 15px; font-weight: bold; }
+nav a:hover { text-decoration: underline; }
+.hero { background: white; padding: 45px 20px; text-align: center; }
+.hero h2 { font-size: 30px; margin-bottom: 10px; }
+.hero p { font-size: 18px; color: #666; }
+.buscador { max-width: 900px; margin: 22px auto; padding: 0 20px; }
+.buscador h2 { margin-bottom: 12px; }
+.buscador input { width: 100%; padding: 15px 16px; border: 2px solid #ccc; border-radius: 8px; font-size: 17px; }
+.buscador input:focus { outline: 3px solid rgba(255,212,0,.4); border-color: #c5a000; }
+.estado-busqueda { color: #666; margin: 14px 0; }
+.resultados-busqueda { margin-top: 16px; }
+.sin-resultados { background: white; padding: 18px; border-radius: 8px; color: #666; }
+.construccion { background: #111; color: white; margin: 30px auto; max-width: 1100px; padding: 35px 20px; text-align: center; border-radius: 10px; border: 3px solid #ffcc00; box-shadow: 0 4px 15px rgba(0,0,0,.25); }
+.construccion h2 { font-size: 26px; margin-bottom: 10px; }
+.construccion p { font-size: 17px; color: #ccc; margin-bottom: 8px; }
+.contenedor { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+.contenedor h2 { margin-bottom: 20px; }
+.subtitulo { font-size: 18px; color: #666; margin: -10px 0 25px; }
+.categorias { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.categoria, .producto, .destacado-vacio { background: white; border-radius: 10px; padding: 24px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+.categoria h3 { font-size: 24px; margin-bottom: 10px; }
+.categoria p { color: #666; margin-bottom: 20px; }
+.seccion-categoria { margin-top: 45px; }
+.destacados { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.producto { padding: 20px; }
+.etiqueta { display: inline-block; background: #ffcc00; color: #111; font-weight: bold; padding: 6px 12px; border-radius: 20px; font-size: 13px; margin-bottom: 14px; }
+.imagen-producto { height: 190px; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; }
+.imagen-producto img { max-width: 100%; max-height: 190px; object-fit: contain; }
+.producto h3 { font-size: 21px; margin-bottom: 8px; }
+.precio { font-size: 26px; font-weight: bold; margin: 10px 0 16px; }
+.boton { display: inline-block; background: #ffcc00; color: #111; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-weight: bold; }
+.boton:hover { background: #e6b800; }
+.destacado-vacio { min-height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #666; border: 2px dashed #ccc; box-shadow: none; }
+.destacado-vacio strong { color: #222; margin-bottom: 8px; }
+footer { margin-top: 40px; background: #111; color: #aaa; text-align: center; padding: 25px; }
+@media (max-width: 600px) { header h1 { font-size: 34px; } nav a { display: inline-block; margin: 6px 9px; } .destacados { grid-template-columns: 1fr; } }
 </style>
-
 </head>
-
-
 <body>
-
-
 <header>
-
     <h1>🛒 CazaChollos</h1>
-
     <p>Los mejores chollos, encontrados para ti</p>
-
 </header>
-
-
 <nav>
-
     <a href="index.html">Inicio</a>
-
     <a href="gaming.html">Gaming</a>
-
     <a href="moda.html">Moda</a>
-
     <a href="tecnologia.html">Tecnología</a>
-
 </nav>
-
-
 <section class="hero">
-
     <h2>🔥 Los mejores chollos, en un solo sitio</h2>
-
-    <p>
-        Encontramos ofertas interesantes para que tú no tengas que buscarlas.
-    </p>
-
+    <p>Encontramos ofertas interesantes para que tú no tengas que buscarlas.</p>
 </section>
-
-
+<section class="buscador" aria-label="Buscar productos">
+    <h2>🔎 Busca un artículo</h2>
+    <input type="search" id="busquedaProductos" placeholder="Por ejemplo: zapatillas, juegos, sudaderas, etc." autocomplete="off" aria-label="Buscar entre los productos">
+    <p id="estadoBusqueda" class="estado-busqueda" aria-live="polite"></p>
+    <div id="resultadosBusqueda" class="destacados resultados-busqueda" hidden></div>
+</section>
 <section class="construccion">
-
-    <h2>🚧 ¡Estamos preparando algo grande!</h2>
-
-    <p>CazaChollos está en construcción.</p>
-
-    <p>
-        Estamos seleccionando las mejores ofertas de Gaming,
-        Moda, Tecnología y mucho más.
-    </p>
-
-    <p>
-        🔥 Muy pronto encontrarás aquí auténticos chollos.
-    </p>
-
+    <h2>🚚 Ofertas con envío en un máximo de 24 horas</h2>
+    <p>Nos comprometemos a preparar y enviar los artículos seleccionados en un plazo máximo de 24 horas.</p>
+    <p>Encuentra chollos de Gaming, Moda, Tecnología y mucho más.</p>
 </section>
-
-
-<section class="contenedor">
-
-    <h2>⚡ Chollos Express</h2>
-
-    <p class="subtitulo-express">
-        Productos que tenemos disponibles y preparados para enviar en 24h.
-    </p>
-
-    <div class="productos">
-
-
-        <div class="categoria">
-
-            <h3>🎮 Gaming</h3>
-
-            <p>
-                Mandos, auriculares, juegos y accesorios gaming.
-            </p>
-
-            <a href="gaming.html" class="boton">
-                Ver chollos
-            </a>
-
+<main>
+    <section class="contenedor">
+        <h2>⚡ Chollos Express</h2>
+        <p class="subtitulo">Artículos seleccionados con compromiso de envío en un máximo de 24 horas.</p>
+        <div class="categorias">
+            <div class="categoria"><h3>🎮 Gaming</h3><p>Mandos, auriculares, juegos y accesorios gaming.</p><a href="gaming.html" class="boton">Ver chollos</a></div>
+            <div class="categoria"><h3>👕 Moda</h3><p>Sudaderas, ropa de marca, zapatillas y más.</p><a href="moda.html" class="boton">Ver chollos</a></div>
+            <div class="categoria"><h3>💻 Tecnología</h3><p>Móviles, informática, electrónica y accesorios.</p><a href="tecnologia.html" class="boton">Ver chollos</a></div>
         </div>
-
-
-        <div class="categoria">
-
-            <h3>👕 Moda</h3>
-
-            <p>
-                Sudaderas, ropa de marca, zapatillas y más.
-            </p>
-
-            <a href="moda.html" class="boton">
-                Ver chollos
-            </a>
-
-        </div>
-
-
-        <div class="categoria">
-
-            <h3>💻 Tecnología</h3>
-
-            <p>
-                Móviles, informática, electrónica y accesorios.
-            </p>
-
-            <a href="tecnologia.html" class="boton">
-                Ver chollos
-            </a>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<section class="contenedor seccion-categoria">
-
-    <h2>🔥 Últimos chollos</h2>
-
-    <div class="productos">
-
-
-        <div class="producto">
-
-            <div class="etiqueta">
-                🔥 OFERTA
-            </div>
-
-            <div class="imagen">
-
-                <img
-                    src="Auriculares PS.jpeg"
-                    alt="Auriculares Gaming"
-                >
-
-            </div>
-
-            <h3>
-                Auriculares Gaming
-            </h3>
-
-            <p>
-                Sonido envolvente para tus partidas.
-            </p>
-
-            <div class="precio-anterior">
-                39,99 €
-            </div>
-
-            <div class="precio">
-                29,99 €
-            </div>
-
-            <div class="comprobado">
-                Precio comprobado al publicar
-            </div>
-
-            <a href="#" class="boton">
-                🔥 VER OFERTA
-            </a>
-
-        </div>
-
-
-        <div class="producto">
-
-            <div class="etiqueta">
-                🔥 OFERTA
-            </div>
-
-            <div class="imagen">
-
-                <img
-                    src="Mando PS5.jpeg"
-                    alt="Mando PlayStation"
-                >
-
-            </div>
-
-            <h3>
-                Mando PlayStation
-            </h3>
-
-            <p>
-                Mando compatible con PlayStation.
-            </p>
-
-            <div class="precio-anterior">
-                59,99 €
-            </div>
-
-            <div class="precio">
-                49,99 €
-            </div>
-
-            <div class="comprobado">
-                Precio comprobado al publicar
-            </div>
-
-            <a href="#" class="boton">
-                🔥 VER OFERTA
-            </a>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<section class="contenedor seccion-categoria">
-
-    <h2>🎮 GAMING</h2>
-
-    <p>
-        Descubre las mejores ofertas en gaming.
-    </p>
-
-    <br>
-
-    <a href="gaming.html" class="boton">
-        ENTRAR EN GAMING
-    </a>
-
-</section>
-
-
-<section class="contenedor seccion-categoria">
-
-    <h2>👕 MODA</h2>
-
-    <p>
-        Descubre las mejores ofertas en moda.
-    </p>
-
-    <br>
-
-    <a href="moda.html" class="boton">
-        ENTRAR EN MODA
-    </a>
-
-</section>
-
-
-<section class="contenedor seccion-categoria">
-
-    <h2>💻 TECNOLOGÍA</h2>
-
-    <p>
-        Descubre las mejores ofertas de tecnología.
-    </p>
-
-    <br>
-
-    <a href="tecnologia.html" class="boton">
-        ENTRAR EN TECNOLOGÍA
-    </a>
-
-</section>
-
-
-<footer>
-
-    <p>
-        © 2026 CazaChollos - Todos los derechos reservados
-    </p>
-
-</footer>
-
-
+    </section>
+
+    <section class="contenedor seccion-categoria">
+        <h2>🔥 Últimos chollos</h2>
+        <div class="destacados" id="productosDestacados"></div>
+    </section>
+
+    <section class="contenedor seccion-categoria">
+        <h2>🎮 GAMING</h2><p>Descubre las mejores ofertas en gaming.</p><br>
+        <a href="gaming.html" class="boton">ENTRAR EN GAMING</a>
+    </section>
+    <section class="contenedor seccion-categoria">
+        <h2>👕 MODA</h2><p>Descubre las mejores ofertas en moda.</p><br>
+        <a href="moda.html" class="boton">ENTRAR EN MODA</a>
+    </section>
+    <section class="contenedor seccion-categoria">
+        <h2>💻 TECNOLOGÍA</h2><p>Descubre las mejores ofertas de tecnología.</p><br>
+        <a href="tecnologia.html" class="boton">ENTRAR EN TECNOLOGÍA</a>
+    </section>
+</main>
+<footer><p>© 2026 CazaChollos - Todos los derechos reservados</p></footer>
+
+<script src="productos.js"></script>
+<script>
+const contenedorDestacados = document.getElementById("productosDestacados");
+const catalogo = typeof productos !== "undefined" && Array.isArray(productos) ? productos : [];
+const destacados = catalogo.filter((producto) => producto.destacado === true).slice(-2);
+const campoBusqueda = document.getElementById("busquedaProductos");
+const resultadosBusqueda = document.getElementById("resultadosBusqueda");
+const estadoBusqueda = document.getElementById("estadoBusqueda");
+
+function texto(tag, contenido, clase) {
+    const elemento = document.createElement(tag);
+    elemento.textContent = contenido;
+    if (clase) elemento.className = clase;
+    return elemento;
+}
+
+function textoBoton(producto) {
+    const plataforma = (producto.plataforma || "").toLowerCase();
+    if (plataforma === "vinted") return "Ver en Vinted";
+    if (plataforma === "wallapop") return "Ver en Wallapop";
+    try {
+        const dominio = new URL(producto.enlace).hostname.toLowerCase();
+        if (dominio.includes("vinted")) return "Ver en Vinted";
+        if (dominio.includes("wallapop")) return "Ver en Wallapop";
+    } catch { /* Para enlaces antiguos o no reconocidos se usa el texto genérico. */ }
+    return "Ver anuncio";
+}
+
+function normalizar(texto) {
+    return String(texto || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+function dibujarResultados() {
+    const consulta = normalizar(campoBusqueda.value.trim());
+    resultadosBusqueda.replaceChildren();
+    if (!consulta) {
+        resultadosBusqueda.hidden = true;
+        estadoBusqueda.textContent = "";
+        return;
+    }
+
+    const encontrados = catalogo.filter((producto) => {
+        const contenido = [producto.nombre, producto.categoria, producto.subcategoria, producto.seccion, producto.plataforma]
+            .filter(Boolean).join(" ");
+        return normalizar(contenido).includes(consulta);
+    });
+    resultadosBusqueda.hidden = false;
+
+    if (encontrados.length === 0) {
+        estadoBusqueda.textContent = "";
+        const mensaje = document.createElement("p");
+        mensaje.className = "sin-resultados";
+        mensaje.textContent = "No encontramos artículos con esa búsqueda.";
+        resultadosBusqueda.appendChild(mensaje);
+        return;
+    }
+
+    estadoBusqueda.textContent = `${encontrados.length} artículo${encontrados.length === 1 ? "" : "s"} encontrado${encontrados.length === 1 ? "" : "s"}`;
+    encontrados.forEach((producto) => {
+        const tarjeta = document.createElement("article");
+        tarjeta.className = "producto";
+        if (producto.imagen) {
+            const marco = document.createElement("div");
+            marco.className = "imagen-producto";
+            const imagen = document.createElement("img");
+            imagen.src = producto.imagen;
+            imagen.alt = producto.nombre || "Producto";
+            imagen.loading = "lazy";
+            marco.appendChild(imagen);
+            tarjeta.appendChild(marco);
+        }
+        tarjeta.appendChild(texto("h3", producto.nombre || "Producto"));
+        const detalleCategoria = [producto.categoria, producto.subcategoria, producto.seccion].filter(Boolean).join(" · ");
+        if (detalleCategoria) tarjeta.appendChild(texto("p", detalleCategoria));
+        tarjeta.appendChild(texto("p", producto.precio || "Precio no indicado", "precio"));
+        if (producto.enlace) {
+            const enlace = document.createElement("a");
+            enlace.className = "boton";
+            enlace.href = producto.enlace;
+            enlace.target = "_blank";
+            enlace.rel = "noopener noreferrer";
+            enlace.textContent = textoBoton(producto);
+            tarjeta.appendChild(enlace);
+        }
+        resultadosBusqueda.appendChild(tarjeta);
+    });
+}
+
+campoBusqueda.addEventListener("input", dibujarResultados);
+
+for (let indice = 0; indice < 2; indice++) {
+    const producto = destacados[indice];
+    if (!producto) continue;
+
+    const tarjeta = document.createElement("article");
+    tarjeta.className = "producto";
+    tarjeta.appendChild(texto("span", "🔥 CHOLLO DESTACADO", "etiqueta"));
+
+    if (producto.imagen) {
+        const marco = document.createElement("div");
+        marco.className = "imagen-producto";
+        const imagen = document.createElement("img");
+        imagen.src = producto.imagen;
+        imagen.alt = producto.nombre || "Producto destacado";
+        imagen.loading = "lazy";
+        marco.appendChild(imagen);
+        tarjeta.appendChild(marco);
+    }
+
+    tarjeta.appendChild(texto("h3", producto.nombre || "Producto"));
+    tarjeta.appendChild(texto("p", producto.precio || "Precio no indicado", "precio"));
+
+    if (producto.enlace) {
+        const enlace = document.createElement("a");
+        enlace.className = "boton";
+        enlace.href = producto.enlace;
+        enlace.target = "_blank";
+        enlace.rel = "noopener noreferrer";
+        enlace.textContent = textoBoton(producto);
+        tarjeta.appendChild(enlace);
+    }
+    contenedorDestacados.appendChild(tarjeta);
+}
+</script>
 </body>
-
 </html>

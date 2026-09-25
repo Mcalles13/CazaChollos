@@ -28,11 +28,12 @@ const productos = [
         categoria: "ps3"
     },
     {
-        nombre: "CALL OF DUTY - Modernw Warfare 3",
-        precio: "6,00€",
-        imagen: "ps3-call-of-duty-modern-warfare3.jpeg",
-        enlace: "https://es.wallapop.com/item/call-of-duty-mw3-ps3-1287427015",
-        categoria: "ps3"
+        "nombre": "CALL OF DUTY - Modernw Warfare 3",
+        "precio": "6,00€",
+        "imagen": "ps3-call-of-duty-modern-warfare3.jpeg",
+        "enlace": "https://es.wallapop.com/item/call-of-duty-mw3-ps3-1287427015",
+        "categoria": "ps3",
+        "destacado": true
     },
     {
         nombre: "THE EYE OF JUDGMENT",
@@ -56,11 +57,48 @@ const productos = [
         categoria: "ps3"
     },
     {
-        nombre: "Zapatillas Adidas  Nº 36.5",
-        precio: "15,00€",
-        imagen: "zapatillas-zapatillas adidas negras y blancas.jpeg",
-        enlace: "https://www.vinted.es/items/10106000131-zapatillas-adidas-36-365",
+        "nombre": "Zapatillas Adidas  Nº 36.5",
+        "precio": "15,00€",
+        "imagen": "zapatillas-zapatillas adidas negras y blancas.jpeg",
+        "enlace": "https://www.vinted.es/items/10106000131-zapatillas-adidas-36-365",
+        "categoria": "moda",
+        "subcategoria": "zapatillas",
+        "destacado": true
+    },
+ {
+        nombre: "Sudadera Tommy Hilfiger con capucha",
+        precio: "28,00€",
+        imagen: "vinted-sudadera tommy hilfiger con capucha.jpeg",
+        enlace: "https://www.vinted.es/items/10036067171-sudadera-tommy-con-capucha",
+        plataforma: "vinted",
+        categoria: "moda",
+        subcategoria: "sudaderas"
+    },
+    {
+        nombre: "Zapatillas deportivas UTWO Eur41",
+        precio: "10,00€",
+        imagen: "vinted-zapatilla utwo negra.jpeg",
+        enlace: "https://www.vinted.es/items/10035945807-zapatilla-deporte-unisex",
+        plataforma: "vinted",
         categoria: "moda",
         subcategoria: "zapatillas"
+    },
+    {
+        nombre: "Zapatillas Victoria 45",
+        precio: "10,00€",
+        imagen: "vinted-zapatillas victoria 45.jpeg",
+        enlace: "https://www.vinted.es/items/10106077424-zapatillas-victoria-45",
+        plataforma: "vinted",
+        categoria: "moda",
+        subcategoria: "zapatillas"
+    },
+    {
+        nombre: "Camiseta Nike Chica  XS",
+        precio: "10,00€",
+        imagen: "vinted-camiseta nike chica.jpeg",
+        enlace: "https://www.vinted.es/items/6222300531-camiseta-chica-nike",
+        plataforma: "vinted",
+        categoria: "moda",
+        subcategoria: "ropa"
     },
 ];

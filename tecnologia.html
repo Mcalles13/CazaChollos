@@ -4,227 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CazaChollos - Tecnología</title>
-
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    color: #222;
-}
-
-header {
-    background: #111;
-    color: white;
-    padding: 28px 20px;
-    text-align: center;
-}
-
-header h1 {
-    font-size: 42px;
-    margin-bottom: 8px;
-    letter-spacing: 1px;
-}
-
-header p {
-    font-size: 18px;
-    color: #ffcc00;
-    font-weight: bold;
-}
-
-nav {
-    background: #ffcc00;
-    padding: 12px;
-    text-align: center;
-}
-
-nav a {
-    color: #111;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-.hero {
-    background: white;
-    padding: 45px 20px;
-    text-align: center;
-}
-
-.hero h2 {
-    font-size: 30px;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 18px;
-    color: #666;
-}
-
-.construccion {
-    background: #111;
-    color: white;
-    margin: 30px auto;
-    max-width: 1100px;
-    padding: 45px 20px;
-    text-align: center;
-    border-radius: 10px;
-    border: 3px solid #ffcc00;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-}
-
-.construccion h2 {
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-.construccion p {
-    font-size: 18px;
-    color: #ccc;
-    margin-bottom: 8px;
-}
-
-.contenedor {
-    max-width: 1100px;
-    margin: 30px auto;
-    padding: 0 20px;
-}
-
-.contenedor h2 {
-    margin-bottom: 20px;
-}
-
-.productos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.categoria {
-    background: white;
-    border-radius: 10px;
-    padding: 30px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-}
-
-.categoria h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.categoria p {
-    color: #666;
-    margin-bottom: 20px;
-}
-
-.boton {
-    display: inline-block;
-    background: #ffcc00;
-    color: #111;
-    padding: 10px 18px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.boton:hover {
-    background: #e6b800;
-}
-
-footer {
-    margin-top: 40px;
-    background: #111;
-    color: #aaa;
-    text-align: center;
-    padding: 25px;
-}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; background: #f4f4f4; color: #222; }
+header { background: #111; color: white; padding: 28px 20px; text-align: center; }
+header h1 { color: #ffd400; margin: 0 0 8px; font-size: 38px; }
+header p { color: #ffcc00; font-weight: bold; margin: 0; }
+nav { background: #ffcc00; padding: 12px; text-align: center; }
+nav a { color: #111; text-decoration: none; font-weight: bold; margin: 0 12px; }
+.hero { background: white; padding: 40px 18px; text-align: center; }
+.hero h2 { margin: 0 0 10px; }
+.contenedor { max-width: 1100px; margin: 30px auto; padding: 0 18px; }
+.obras { background: #111; color: white; border: 3px solid #ffcc00; border-radius: 10px; padding: 28px 18px; text-align: center; margin-bottom: 30px; }
+.obras p { color: #ddd; margin: 8px 0 0; }
+.productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.categoria { background: white; border-radius: 10px; padding: 28px 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+.categoria h3 { margin: 0 0 10px; }
+.categoria p { color: #666; margin: 0 0 18px; }
+.boton { display: inline-block; background: #ffcc00; color: #111; padding: 10px 17px; border-radius: 6px; text-decoration: none; font-weight: bold; }
+footer { background: #111; color: #aaa; text-align: center; padding: 22px; margin-top: 40px; }
 </style>
 </head>
-
 <body>
-
-<header>
-    <h1>🛒 CazaChollos</h1>
-    <p>Los mejores chollos, encontrados para ti</p>
-</header>
-
-<nav>
-    <a href="index.html">Inicio</a>
-    <a href="gaming.html">Gaming</a>
-    <a href="moda.html">Moda</a>
-    <a href="tecnologia.html">Tecnología</a>
-</nav>
-
-<section class="hero">
-    <h2>💻 Los mejores chollos de Tecnología</h2>
-    <p>Móviles, informática, electrónica y accesorios.</p>
-</section>
-
-<section class="construccion">
-
-    <h2>🚧 ¡Estamos preparando algo grande!</h2>
-
-    <p>CazaChollos Tecnología está en construcción.</p>
-
-    <p>Estamos seleccionando las mejores ofertas de tecnología para ti.</p>
-
-    <p>🔥 Muy pronto encontrarás aquí auténticos chollos.</p>
-
-</section>
-
-<section class="contenedor">
-
+<header><h1>🛒 CazaChollos</h1><p>Los mejores chollos, encontrados para ti</p></header>
+<nav><a href="index.html">Inicio</a><a href="gaming.html">Gaming</a><a href="moda.html">Moda</a><a href="tecnologia.html">Tecnología</a></nav>
+<section class="hero"><h2>💻 Los mejores chollos de Tecnología</h2><p>Móviles, informática, electrónica, gadgets y accesorios.</p></section>
+<main class="contenedor">
     <h2>💻 Categorías de Tecnología</h2>
-
     <div class="productos">
-
-        <div class="categoria">
-            <h3>📱 Móviles</h3>
-            <p>Smartphones y grandes ofertas en telefonía.</p>
-            <a href="#" class="boton">Ver chollos</a>
-        </div>
-
-        <div class="categoria">
-            <h3>💻 Informática</h3>
-            <p>Ordenadores, portátiles y componentes.</p>
-            <a href="#" class="boton">Ver chollos</a>
-        </div>
-
-        <div class="categoria">
-            <h3>🎧 Electrónica</h3>
-            <p>Auriculares, altavoces y dispositivos electrónicos.</p>
-            <a href="#" class="boton">Ver chollos</a>
-        </div>
-
-        <div class="categoria">
-            <h3>⌚ Gadgets</h3>
-            <p>Smartwatches, dispositivos inteligentes y mucho más.</p>
-            <a href="#" class="boton">Ver chollos</a>
-        </div>
-
-        <div class="categoria">
-            <h3>🔌 Accesorios</h3>
-            <p>Cables, cargadores, fundas y accesorios tecnológicos.</p>
-            <a href="#" class="boton">Ver chollos</a>
-        </div>
-
+        <article class="categoria"><h3>📱 Móviles</h3><p>Smartphones y grandes ofertas en telefonía.</p><a class="boton" href="categoria-productos.html?categoria=tecnologia&subcategoria=moviles">Ver chollos</a></article>
+        <article class="categoria"><h3>💻 Informática</h3><p>Ordenadores, portátiles y componentes.</p><a class="boton" href="categoria-productos.html?categoria=tecnologia&subcategoria=informatica">Ver chollos</a></article>
+        <article class="categoria"><h3>🎧 Electrónica</h3><p>Auriculares, altavoces y dispositivos electrónicos.</p><a class="boton" href="categoria-productos.html?categoria=tecnologia&subcategoria=electronica">Ver chollos</a></article>
+        <article class="categoria"><h3>⌚ Gadgets</h3><p>Smartwatches, dispositivos inteligentes y mucho más.</p><a class="boton" href="categoria-productos.html?categoria=tecnologia&subcategoria=gadgets">Ver chollos</a></article>
+        <article class="categoria"><h3>🔌 Accesorios</h3><p>Cables, cargadores, fundas y accesorios tecnológicos.</p><a class="boton" href="categoria-productos.html?categoria=tecnologia&subcategoria=accesorios">Ver chollos</a></article>
     </div>
-
-</section>
-
-<footer>
-    <p>© 2026 CazaChollos - Todos los derechos reservados</p>
-</footer>
-
+</main>
+<footer>© 2026 CazaChollos - Todos los derechos reservados</footer>
 </body>
 </html>

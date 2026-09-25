@@ -1,476 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>CazaChollos - Gaming</title>
-
 <style>
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    color: #222;
-}
-
-header {
-    background: #111;
-    color: white;
-    padding: 28px 20px;
-    text-align: center;
-}
-
-header h1 {
-    font-size: 42px;
-    margin-bottom: 8px;
-}
-
-header p {
-    font-size: 18px;
-    color: #ffcc00;
-    font-weight: bold;
-}
-
-nav {
-    background: #ffcc00;
-    padding: 12px;
-    text-align: center;
-}
-
-nav a {
-    color: #111;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-.hero {
-    background: white;
-    padding: 40px 20px;
-    text-align: center;
-}
-
-.hero h2 {
-    font-size: 30px;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 18px;
-    color: #666;
-}
-
-.construccion {
-    background: #111;
-    color: white;
-    margin: 30px auto;
-    max-width: 1100px;
-    padding: 45px 20px;
-    text-align: center;
-    border-radius: 10px;
-    border: 3px solid #ffcc00;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-}
-
-.construccion h2 {
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-.construccion p {
-    font-size: 18px;
-    color: #ccc;
-    margin-bottom: 8px;
-}
-
-.contenedor {
-    max-width: 1100px;
-    margin: 30px auto;
-    padding: 0 20px;
-}
-
-.contenedor h2 {
-    margin-bottom: 20px;
-}
-
-.productos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.producto {
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-    position: relative;
-}
-
-.producto .etiqueta {
-    display: inline-block;
-    background: #ffcc00;
-    color: #111;
-    font-weight: bold;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-    margin-bottom: 15px;
-}
-
-.producto .imagen {
-    height: 180px;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.producto .imagen img {
-    max-width: 100%;
-    max-height: 180px;
-    object-fit: contain;
-}
-
-.producto h3 {
-    margin-bottom: 10px;
-    font-size: 21px;
-}
-
-.producto p {
-    color: #666;
-}
-
-.precio-anterior {
-    color: #888;
-    text-decoration: line-through;
-    font-size: 16px;
-    margin-top: 12px;
-}
-
-.precio {
-    font-size: 28px;
-    font-weight: bold;
-    margin: 5px 0 10px 0;
-}
-
-.comprobado {
-    font-size: 13px;
-    color: #888;
-    margin-bottom: 15px;
-}
-
-.boton {
-    display: inline-block;
-    background: #ffcc00;
-    color: #111;
-    padding: 10px 18px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.boton:hover {
-    background: #e6b800;
-}
-
-.seccion-categoria {
-    margin-top: 50px;
-}
-
-.seccion-categoria h2 {
-    margin-bottom: 20px;
-}
-
-.categoria {
-    background: white;
-    border-radius: 10px;
-    padding: 30px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-}
-
-.categoria h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.categoria p {
-    color: #666;
-    margin-bottom: 20px;
-}
-
-footer {
-    margin-top: 40px;
-    background: #111;
-    color: #aaa;
-    text-align: center;
-    padding: 25px;
-}
-
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; background: #f4f4f4; color: #222; }
+header { background: #111; color: white; padding: 28px 20px; text-align: center; }
+header h1 { color: #ffd400; margin: 0 0 8px; font-size: 38px; }
+header p { color: #ffcc00; font-weight: bold; margin: 0; }
+nav { background: #ffcc00; padding: 12px; text-align: center; }
+nav a { color: #111; text-decoration: none; font-weight: bold; margin: 0 12px; }
+.hero { background: white; padding: 35px 18px; text-align: center; }
+.hero h2 { margin: 0 0 10px; }
+.contenedor { max-width: 1100px; margin: 30px auto; padding: 0 18px; }
+.contenedor h2 { margin-bottom: 18px; }
+.productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.categoria, .producto { background: white; border-radius: 10px; padding: 22px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+.categoria h3, .producto h3 { margin: 0 0 10px; }
+.categoria p, .producto p { color: #666; margin: 0 0 16px; }
+.producto img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 12px; }
+.boton { display: inline-block; background: #ffcc00; color: #111; padding: 10px 17px; border-radius: 6px; text-decoration: none; font-weight: bold; }
+.obras { background: #111; color: white; border: 3px solid #ffcc00; border-radius: 10px; padding: 28px 18px; text-align: center; margin-bottom: 30px; }
+.obras p { color: #ddd; margin: 8px 0 0; }
+footer { background: #111; color: #aaa; text-align: center; padding: 22px; margin-top: 40px; }
 </style>
-
 </head>
-
-
 <body>
-
-
-<header>
-
-    <h1>🛒 CazaChollos</h1>
-
-    <p>Los mejores chollos, encontrados para ti</p>
-
-</header>
-
-
-<nav>
-
-    <a href="index.html">Inicio</a>
-
-    <a href="gaming.html">Gaming</a>
-
-    <a href="moda.html">Moda</a>
-
-    <a href="tecnologia.html">Tecnología</a>
-
-</nav>
-
-
-<section class="hero">
-
-    <h2>🎮 Los mejores chollos Gaming</h2>
-
-    <p>
-        Descubre nuestras mejores ofertas en productos gaming.
-    </p>
-
-</section>
-
-
-<section class="construccion">
-
-    <h2>🚧 ¡Estamos preparando algo grande!</h2>
-
-    <p>
-        Estamos seleccionando las mejores ofertas gaming.
-    </p>
-
-    <p>
-        🔥 Muy pronto encontrarás aquí auténticos chollos.
-    </p>
-
-</section>
-
-
-<section class="contenedor seccion-categoria">
-
-    <h2>🔥 Últimos chollos Gaming</h2>
-
-    <div class="productos">
-
-
-        <div class="producto">
-
-            <div class="etiqueta">
-                🎧 AURICULARES GAMING
-            </div>
-
-            <div class="imagen">
-
-                <img
-                    src="Auriculares PS.jpeg"
-                    alt="Auriculares Gaming"
-                >
-
-            </div>
-
-            <h3>
-                Auriculares Gaming
-            </h3>
-
-            <p>
-                Sonido envolvente para tus partidas.
-            </p>
-
-            <div class="precio-anterior">
-                39,99 €
-            </div>
-
-            <div class="precio">
-                29,99 €
-            </div>
-
-            <div class="comprobado">
-                Precio comprobado al publicar
-            </div>
-
-            <a href="#" class="boton">
-                🔥 VER OFERTA
-            </a>
-
+<header><h1>🛒 CazaChollos</h1><p>Los mejores chollos, encontrados para ti</p></header>
+<nav><a href="index.html">Inicio</a><a href="gaming.html">Gaming</a><a href="moda.html">Moda</a><a href="tecnologia.html">Tecnología</a></nav>
+<section class="hero"><h2>🎮 Los mejores chollos Gaming</h2><p>Descubre nuestras ofertas en productos gaming.</p></section>
+<main>
+    <section class="contenedor">
+        <h2>🔥 Últimos chollos Gaming</h2>
+        <div class="productos">
+            <article class="producto"><img src="Auriculares PS.jpeg" alt="Auriculares Gaming"><h3>🎧 Auriculares Gaming</h3><p>Sonido envolvente para tus partidas.</p><a href="#" class="boton">🔥 VER OFERTA</a></article>
+            <article class="producto"><img src="Mando PS5.jpeg" alt="Mando PlayStation"><h3>🎮 Mando PlayStation</h3><p>Mando compatible con PlayStation.</p><a href="#" class="boton">🔥 VER OFERTA</a></article>
         </div>
-
-
-        <div class="producto">
-
-            <div class="etiqueta">
-                🎮 MANDO GAMING
-            </div>
-
-            <div class="imagen">
-
-                <img
-                    src="Mando PS5.jpeg"
-                    alt="Mando PlayStation"
-                >
-
-            </div>
-
-            <h3>
-                Mando PlayStation
-            </h3>
-
-            <p>
-                Mando compatible con PlayStation.
-            </p>
-
-            <div class="precio-anterior">
-                59,99 €
-            </div>
-
-            <div class="precio">
-                49,99 €
-            </div>
-
-            <div class="comprobado">
-                Precio comprobado al publicar
-            </div>
-
-            <a href="#" class="boton">
-                🔥 VER OFERTA
-            </a>
-
+    </section>
+    <section class="contenedor">
+        <h2>🎮 Categorías Gaming</h2>
+        <div class="productos">
+            <article class="categoria"><h3>🎧 Auriculares</h3><p>Auriculares y sonido gaming.</p><a class="boton" href="categoria-productos.html?categoria=gaming&subcategoria=auriculares">Ver productos</a></article>
+            <article class="categoria"><h3>🎮 Mandos</h3><p>Mandos para PlayStation y otras consolas.</p><a class="boton" href="categoria-productos.html?categoria=gaming&subcategoria=mandos">Ver productos</a></article>
+            <article class="categoria"><h3>🕹️ Consolas</h3><p>Consolas y sistemas gaming.</p><a class="boton" href="categoria-productos.html?categoria=gaming&subcategoria=consolas">Ver productos</a></article>
+            <article class="categoria"><h3>🎮 Juegos</h3><p>Juegos para PlayStation y PC.</p><a class="boton" href="juegos.html">Acceder a juegos</a></article>
+            <article class="categoria"><h3>💻 Accesorios</h3><p>Accesorios y complementos gaming.</p><a class="boton" href="categoria-productos.html?categoria=gaming&subcategoria=accesorios">Ver productos</a></article>
         </div>
-
-
-    </div>
-
-</section>
-
-
-<section class="contenedor seccion-categoria">
-
-    <h2>🎮 Categorías Gaming</h2>
-
-    <div class="productos">
-
-
-        <div class="categoria">
-
-            <h3>🎧 Auriculares</h3>
-
-            <p>
-                Auriculares y sonido gaming.
-            </p>
-
-            <a href="#" class="boton">
-                Ver productos
-            </a>
-
-        </div>
-
-
-        <div class="categoria">
-
-            <h3>🎮 Mandos</h3>
-
-            <p>
-                Mandos para PlayStation y otras consolas.
-            </p>
-
-            <a href="#" class="boton">
-                Ver productos
-            </a>
-
-        </div>
-
-
-        <div class="categoria">
-
-            <h3>🕹️ Consolas</h3>
-
-            <p>
-                Consolas y sistemas gaming.
-            </p>
-
-            <a href="#" class="boton">
-                Ver productos
-            </a>
-
-        </div>
-
-
-        <div class="categoria">
-
-            <h3>🎮 Juegos</h3>
-
-            <p>
-                Juegos para PlayStation y otras plataformas.
-            </p>
-
-            <a href="juegos.html" class="boton">
-                ACCEDER A JUEGOS
-            </a>
-
-        </div>
-
-
-        <div class="categoria">
-
-            <h3>💻 Accesorios</h3>
-
-            <p>
-                Accesorios y complementos gaming.
-            </p>
-
-            <a href="#" class="boton">
-                Ver productos
-            </a>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<footer>
-
-    <p>
-        © 2026 CazaChollos - Todos los derechos reservados
-    </p>
-
-</footer>
-
-
+    </section>
+</main>
+<footer>© 2026 CazaChollos - Todos los derechos reservados</footer>
 </body>
-
 </html>

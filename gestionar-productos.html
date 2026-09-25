@@ -35,11 +35,11 @@ button:hover { background: #e6bd00; }
 </header>
 <main>
     <div class="aviso">
-        Cambia el precio si lo has rebajado y marca hasta <strong>dos artículos</strong> para la portada. Al descargar el archivo, reemplaza <strong>productos.js</strong> en GitHub y guarda los cambios.
+        Cambia el precio si lo has rebajado y marca hasta <strong>dos artículos</strong> para la portada. Descarga el TXT, copia todo su contenido dentro del <strong>productos.js</strong> existente en GitHub y guarda los cambios.
     </div>
     <p id="contador" aria-live="polite"></p>
     <section id="listaProductos"></section>
-    <div class="acciones"><button id="descargar" type="button">Descargar productos.js actualizado</button></div>
+    <div class="acciones"><button id="descargar" type="button">Descargar cambios en TXT</button></div>
 </main>
 <script src="productos.js"></script>
 <script>
@@ -80,9 +80,11 @@ function renderizar() {
         datos.appendChild(titulo);
 
         const ruta = [producto.categoria, producto.subcategoria, producto.seccion].filter(Boolean).join(" › ");
+        const etiquetasPlataforma = { vinted: "Vinted", wallapop: "Wallapop", otra: "Otra plataforma" };
         const categoria = document.createElement("p");
         categoria.className = "meta";
-        categoria.textContent = `${ruta || "Sin categoría"}${producto.plataforma ? ` · ${producto.plataforma}` : ""}`;
+        const nombrePlataforma = etiquetasPlataforma[producto.plataforma] || producto.plataforma;
+        categoria.textContent = `${ruta || "Sin categoría"}${nombrePlataforma ? ` · ${nombrePlataforma}` : ""}`;
         datos.appendChild(categoria);
 
         const precioContenedor = document.createElement("div");
@@ -135,14 +137,14 @@ document.getElementById("descargar").addEventListener("click", () => {
         return { ...producto, precio, destacado };
     });
     const contenido = `const productos = ${JSON.stringify(actualizados, null, 4)};\n`;
-    const archivo = new Blob([contenido], { type: "text/javascript;charset=utf-8" });
+    const archivo = new Blob([contenido], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(archivo);
     const enlace = document.createElement("a");
     enlace.href = url;
-    enlace.download = "productos.js";
+    enlace.download = "productos-actualizado.txt";
     enlace.click();
     URL.revokeObjectURL(url);
-    alert("Archivo descargado. Ahora reemplaza productos.js en GitHub y guarda los cambios.");
+    alert("TXT descargado. Ábrelo con el Bloc de notas, copia todo su contenido y pégalo en el productos.js existente de GitHub. Después guarda con Commit changes.");
 });
 
 renderizar();
