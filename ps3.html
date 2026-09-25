@@ -2,169 +2,110 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juegos PS3 - CazaChollos</title>
-
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #f4f4f4;
-        }
-
-        header {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 25px;
-        }
-
-        header h1 {
-            margin: 0;
-            color: #ffd400;
-        }
-
-        header p {
-            margin: 8px 0 0;
-        }
-
-        nav {
-            background: #ffd400;
-            text-align: center;
-            padding: 12px;
-        }
-
-        nav a {
-            color: #111;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 15px;
-        }
-
-        .hero {
-            background: white;
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        .hero h2 {
-            margin: 0 0 10px;
-        }
-
-        .productos {
-            max-width: 1100px;
-            margin: 30px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
-        }
-
-        .producto {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        .producto img {
-            width: 100%;
-            height: 220px;
-            object-fit: contain;
-            border-radius: 8px;
-        }
-
-        .producto h3 {
-            margin: 15px 0 10px;
-        }
-
-        .precio {
-            font-size: 22px;
-            font-weight: bold;
-            color: #111;
-        }
-
-        .boton {
-            display: inline-block;
-            background: #ffd400;
-            color: #111;
-            text-decoration: none;
-            padding: 12px 18px;
-            border-radius: 6px;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .boton:hover {
-            background: #e6bd00;
-        }
-
-        footer {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; color: #222; }
+        header { background: #111; color: white; text-align: center; padding: 25px; }
+        header h1 { margin: 0; color: #ffd400; }
+        header p { margin: 8px 0 0; }
+        nav { background: #ffd400; text-align: center; padding: 12px; }
+        nav a { color: #111; text-decoration: none; font-weight: bold; margin: 0 15px; }
+        .hero { background: white; text-align: center; padding: 30px 20px; }
+        .hero h2 { margin: 0 0 10px; }
+        .productos { max-width: 1100px; margin: 30px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+        .producto { background: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,.1); }
+        .producto img { width: 100%; height: 220px; object-fit: contain; border-radius: 8px; }
+        .producto h3 { margin: 15px 0 10px; }
+        .precio { font-size: 22px; font-weight: bold; color: #111; }
+        .boton { display: inline-block; background: #ffd400; color: #111; text-decoration: none; padding: 12px 18px; border-radius: 6px; font-weight: bold; margin-top: 10px; }
+        .boton:hover { background: #e6bd00; }
+        .vacio { grid-column: 1 / -1; background: white; padding: 20px; border-radius: 8px; text-align: center; }
+        footer { background: #111; color: white; text-align: center; padding: 20px; margin-top: 40px; }
     </style>
 </head>
-
 <body>
-
 <header>
     <h1>🛒 CazaChollos</h1>
     <p>Los mejores chollos, encontrados para ti</p>
 </header>
-
 <nav>
     <a href="index.html">Inicio</a>
     <a href="gaming.html">Gaming</a>
     <a href="moda.html">Moda</a>
     <a href="tecnologia.html">Tecnología</a>
 </nav>
-
 <section class="hero">
     <h2>🎮 Juegos PS3</h2>
-    <p>Juegos de PlayStation 3 disponibles en Wallapop.</p>
+    <p>Juegos de PlayStation 3 disponibles en Vinted y Wallapop.</p>
 </section>
-
-<section class="productos" id="listaProductos"></section>
+<main class="productos" id="listaProductos"></main>
+<footer>© 2026 CazaChollos - Todos los derechos reservados</footer>
 
 <script src="productos.js"></script>
-
 <script>
-
 const lista = document.getElementById("listaProductos");
+const todosLosProductos = typeof productos !== "undefined" && Array.isArray(productos) ? productos : [];
 
-const productosPS3 = productos.filter(function(producto) {
-    return producto.categoria === "ps3";
-});
+// Acepta el formato antiguo (categoria: "ps3") y el nuevo formulario jerárquico.
+const productosPS3 = todosLosProductos.filter((producto) =>
+    producto.categoria === "ps3" ||
+    (producto.categoria === "gaming" && producto.subcategoria === "juegos" && producto.seccion === "ps3")
+);
 
-productosPS3.forEach(function(producto) {
+function crearTexto(tag, texto, clase) {
+    const elemento = document.createElement(tag);
+    elemento.textContent = texto;
+    if (clase) elemento.className = clase;
+    return elemento;
+}
 
-    lista.innerHTML += `
-        <div class="producto">
+function nombrePlataforma(producto) {
+    const plataforma = (producto.plataforma || "").toLowerCase();
+    if (plataforma === "vinted") return "🟡 VER EN VINTED";
+    if (plataforma === "wallapop") return "🟡 VER EN WALLAPOP";
 
-            <img src="${producto.imagen}" alt="${producto.nombre}">
+    // Para los artículos antiguos sin el campo plataforma, se intenta deducirla del enlace.
+    try {
+        const dominio = new URL(producto.enlace).hostname.toLowerCase();
+        if (dominio.includes("vinted")) return "🟡 VER EN VINTED";
+        if (dominio.includes("wallapop")) return "🟡 VER EN WALLAPOP";
+    } catch { /* Si no se reconoce el enlace, se utiliza el texto genérico. */ }
+    return "🟡 VER ANUNCIO";
+}
 
-            <h3>${producto.nombre}</h3>
+if (productosPS3.length === 0) {
+    lista.appendChild(crearTexto("p", "Todavía no hay juegos PS3 publicados.", "vacio"));
+} else {
+    productosPS3.forEach((producto) => {
+        const tarjeta = document.createElement("article");
+        tarjeta.className = "producto";
 
-            <p class="precio">${producto.precio}</p>
+        if (producto.imagen) {
+            const imagen = document.createElement("img");
+            imagen.src = producto.imagen;
+            imagen.alt = producto.nombre || "Juego PS3";
+            imagen.loading = "lazy";
+            tarjeta.appendChild(imagen);
+        }
 
-            <a class="boton" href="${producto.enlace}" target="_blank">
-                🟡 VER EN WALLAPOP
-            </a>
+        tarjeta.appendChild(crearTexto("h3", producto.nombre || "Juego PS3"));
+        tarjeta.appendChild(crearTexto("p", producto.precio || "Precio no indicado", "precio"));
 
-        </div>
-    `;
+        if (producto.enlace) {
+            const enlace = document.createElement("a");
+            enlace.className = "boton";
+            enlace.href = producto.enlace;
+            enlace.target = "_blank";
+            enlace.rel = "noopener noreferrer";
+            enlace.textContent = nombrePlataforma(producto);
+            tarjeta.appendChild(enlace);
+        }
 
-});
-
+        lista.appendChild(tarjeta);
+    });
+}
 </script>
-
-<footer>
-    © 2026 CazaChollos - Todos los derechos reservados
-</footer>
-
 </body>
 </html>

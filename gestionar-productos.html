@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestionar productos - CazaChollos</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; color: #222; background: #f4f4f4; }
+header { background: #111; color: white; padding: 24px 16px; text-align: center; }
+header h1 { color: #ffd400; margin: 0 0 8px; }
+main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
+.aviso, .producto { background: white; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+.aviso { line-height: 1.5; border-left: 5px solid #ffd400; }
+.producto { display: grid; grid-template-columns: 100px 1fr; gap: 16px; align-items: center; }
+.producto img { width: 100px; height: 100px; object-fit: contain; }
+.producto h2 { font-size: 18px; margin: 0 0 8px; }
+.meta { color: #666; font-size: 14px; margin-bottom: 10px; }
+.precio label { display: block; font-weight: bold; margin-bottom: 5px; }
+.precio input { width: min(240px, 100%); padding: 10px; border: 1px solid #bbb; border-radius: 6px; font-size: 16px; }
+.destacar { display: flex; align-items: center; gap: 9px; font-weight: bold; margin-top: 12px; }
+.destacar input { width: 20px; height: 20px; accent-color: #c5a000; }
+.acciones { position: sticky; bottom: 0; background: #f4f4f4; padding: 14px 0; }
+button { width: 100%; padding: 14px; border: 0; border-radius: 7px; background: #ffd400; color: #111; font-size: 17px; font-weight: bold; cursor: pointer; }
+button:hover { background: #e6bd00; }
+#contador { text-align: center; font-weight: bold; margin-bottom: 10px; }
+.vacio { padding: 24px; background: white; border-radius: 10px; text-align: center; }
+@media (max-width: 520px) { .producto { grid-template-columns: 70px 1fr; gap: 12px; padding: 14px; } .producto img { width: 70px; height: 70px; } }
+</style>
+</head>
+<body>
+<header>
+    <h1>🛒 Gestionar productos</h1>
+    <p>CazaChollos · Actualizar precios y últimos chollos</p>
+</header>
+<main>
+    <div class="aviso">
+        Cambia el precio si lo has rebajado y marca hasta <strong>dos artículos</strong> para la portada. Al descargar el archivo, reemplaza <strong>productos.js</strong> en GitHub y guarda los cambios.
+    </div>
+    <p id="contador" aria-live="polite"></p>
+    <section id="listaProductos"></section>
+    <div class="acciones"><button id="descargar" type="button">Descargar productos.js actualizado</button></div>
+</main>
+<script src="productos.js"></script>
+<script>
+const lista = document.getElementById("listaProductos");
+const inventario = typeof productos !== "undefined" && Array.isArray(productos) ? productos : [];
+const contador = document.getElementById("contador");
+
+function actualizarContador() {
+    const marcados = lista.querySelectorAll(".destacar input:checked").length;
+    contador.textContent = `Destacados seleccionados: ${marcados} de 2`;
+}
+
+function renderizar() {
+    if (inventario.length === 0) {
+        const vacio = document.createElement("p");
+        vacio.className = "vacio";
+        vacio.textContent = "No se han encontrado productos. Asegúrate de abrir esta página desde la misma carpeta que productos.js.";
+        lista.appendChild(vacio);
+        actualizarContador();
+        return;
+    }
+
+    inventario.forEach((producto, indice) => {
+        const tarjeta = document.createElement("article");
+        tarjeta.className = "producto";
+        if (producto.imagen) {
+            const imagen = document.createElement("img");
+            imagen.src = producto.imagen;
+            imagen.alt = producto.nombre || "Imagen del producto";
+            tarjeta.appendChild(imagen);
+        } else {
+            tarjeta.appendChild(document.createElement("div"));
+        }
+
+        const datos = document.createElement("div");
+        const titulo = document.createElement("h2");
+        titulo.textContent = producto.nombre || `Producto ${indice + 1}`;
+        datos.appendChild(titulo);
+
+        const ruta = [producto.categoria, producto.subcategoria, producto.seccion].filter(Boolean).join(" › ");
+        const categoria = document.createElement("p");
+        categoria.className = "meta";
+        categoria.textContent = `${ruta || "Sin categoría"}${producto.plataforma ? ` · ${producto.plataforma}` : ""}`;
+        datos.appendChild(categoria);
+
+        const precioContenedor = document.createElement("div");
+        precioContenedor.className = "precio";
+        const etiquetaPrecio = document.createElement("label");
+        etiquetaPrecio.htmlFor = `precio-${indice}`;
+        etiquetaPrecio.textContent = "Precio";
+        const precio = document.createElement("input");
+        precio.type = "text";
+        precio.id = `precio-${indice}`;
+        precio.value = producto.precio || "";
+        precio.dataset.indice = String(indice);
+        precioContenedor.append(etiquetaPrecio, precio);
+        datos.appendChild(precioContenedor);
+
+        const destacar = document.createElement("label");
+        destacar.className = "destacar";
+        const casilla = document.createElement("input");
+        casilla.type = "checkbox";
+        casilla.checked = producto.destacado === true;
+        casilla.dataset.indice = String(indice);
+        const texto = document.createElement("span");
+        texto.textContent = "Mostrar en Últimos chollos";
+        destacar.append(casilla, texto);
+        datos.appendChild(destacar);
+        tarjeta.appendChild(datos);
+        lista.appendChild(tarjeta);
+    });
+
+    lista.addEventListener("change", (evento) => {
+        if (!evento.target.matches(".destacar input")) return;
+        const seleccionadas = [...lista.querySelectorAll(".destacar input:checked")];
+        if (seleccionadas.length > 2) {
+            evento.target.checked = false;
+            alert("Puedes destacar como máximo dos artículos a la vez.");
+        }
+        actualizarContador();
+    });
+    actualizarContador();
+}
+
+document.getElementById("descargar").addEventListener("click", () => {
+    if (inventario.length === 0) {
+        alert("No hay productos cargados. Comprueba que productos.js esté junto a esta página.");
+        return;
+    }
+    const actualizados = inventario.map((producto, indice) => {
+        const precio = document.getElementById(`precio-${indice}`).value.trim();
+        const destacado = lista.querySelector(`.destacar input[data-indice="${indice}"]`).checked;
+        return { ...producto, precio, destacado };
+    });
+    const contenido = `const productos = ${JSON.stringify(actualizados, null, 4)};\n`;
+    const archivo = new Blob([contenido], { type: "text/javascript;charset=utf-8" });
+    const url = URL.createObjectURL(archivo);
+    const enlace = document.createElement("a");
+    enlace.href = url;
+    enlace.download = "productos.js";
+    enlace.click();
+    URL.revokeObjectURL(url);
+    alert("Archivo descargado. Ahora reemplaza productos.js en GitHub y guarda los cambios.");
+});
+
+renderizar();
+</script>
+</body>
+</html>

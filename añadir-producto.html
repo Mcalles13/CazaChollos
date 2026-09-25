@@ -2,206 +2,195 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Añadir producto - CazaChollos</title>
-
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            margin: 0;
-        }
-
-        header {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 25px;
-        }
-
-        header h1 {
-            margin: 0;
-            color: #ffd400;
-        }
-
-        header p {
-            margin: 8px 0 0;
-        }
-
-        .contenedor {
-            max-width: 700px;
-            margin: 30px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            text-align: center;
-        }
-
-        label {
-            display: block;
-            margin-top: 18px;
-            font-weight: bold;
-        }
-
-        input,
-        select {
-            width: 100%;
-            padding: 12px;
-            margin-top: 7px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 16px;
-        }
-
-        select {
-            background: white;
-        }
-
-        button {
-            width: 100%;
-            margin-top: 25px;
-            padding: 14px;
-            background: #ffd400;
-            border: none;
-            border-radius: 6px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #e6bd00;
-        }
-
-        textarea {
-            width: 100%;
-            height: 250px;
-            margin-top: 20px;
-            padding: 12px;
-            box-sizing: border-box;
-            font-family: Consolas, monospace;
-            font-size: 14px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-
-        .ayuda {
-            background: #fff8cc;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            line-height: 1.5;
-        }
-
-        .copiar {
-            background: #222;
-            color: white;
-        }
-
-        .copiar:hover {
-            background: #000;
-        }
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; }
+        header { background: #111; color: white; text-align: center; padding: 25px; }
+        header h1 { margin: 0; color: #ffd400; }
+        header p { margin: 8px 0 0; }
+        .contenedor { max-width: 700px; margin: 30px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,.1); }
+        h2 { text-align: center; }
+        label { display: block; margin-top: 18px; font-weight: bold; }
+        input, select { width: 100%; padding: 12px; margin-top: 7px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; background: white; }
+        button { width: 100%; margin-top: 25px; padding: 14px; background: #ffd400; border: 0; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; }
+        button:hover { background: #e6bd00; }
+        textarea { width: 100%; height: 280px; margin-top: 20px; padding: 12px; box-sizing: border-box; font-family: Consolas, monospace; font-size: 14px; border: 1px solid #ccc; border-radius: 6px; }
+        .ayuda { background: #fff8cc; padding: 15px; border-radius: 8px; margin-top: 20px; line-height: 1.5; }
+        .copiar { background: #222; color: white; }
+        .copiar:hover { background: #000; }
+        [hidden] { display: none !important; }
     </style>
 </head>
-
 <body>
-
 <header>
     <h1>🛒 CazaChollos</h1>
     <p>Añadir nuevo producto</p>
 </header>
-
-<div class="contenedor">
-
+<main class="contenedor">
     <h2>➕ Añadir producto</h2>
 
-    <label>Nombre del producto</label>
-    <input type="text" id="nombre" placeholder="Ejemplo: FIFA 19 PS3">
+    <label for="nombre">Nombre del producto</label>
+    <input type="text" id="nombre" placeholder="Ejemplo: Zapatillas deportivas">
 
-    <label>Precio</label>
-    <input type="text" id="precio" placeholder="Ejemplo: 8,00 €">
+    <label for="precio">Precio</label>
+    <input type="text" id="precio" placeholder="Ejemplo: 15,00 €">
 
-    <label>Categoría</label>
+    <label for="categoria">Sección principal</label>
     <select id="categoria">
-        <option value="">Selecciona una categoría</option>
-        <option value="ps3">🎮 PS3</option>
-        <option value="ps4">🎮 PS4</option>
-        <option value="ps5">🎮 PS5</option>
+        <option value="">Selecciona una sección</option>
         <option value="gaming">🎮 Gaming</option>
         <option value="moda">👕 Moda</option>
         <option value="tecnologia">💻 Tecnología</option>
     </select>
 
-    <label>Nombre exacto de la imagen</label>
-    <input type="text" id="imagen" placeholder="Ejemplo: fifa19-ps3.jpeg">
+    <div id="grupo-subcategoria" hidden>
+        <label for="subcategoria">Categoría</label>
+        <select id="subcategoria" disabled>
+            <option value="">Primero selecciona una sección principal</option>
+        </select>
+    </div>
 
-    <label>Enlace de Wallapop</label>
-    <input type="text" id="enlace" placeholder="Pega aquí el enlace de Wallapop">
+    <div id="grupo-seccion" hidden>
+        <label for="seccion">Plataforma del juego</label>
+        <select id="seccion" disabled>
+            <option value="">Selecciona una plataforma</option>
+            <option value="ps3">🎮 PS3</option>
+            <option value="ps4">🎮 PS4</option>
+            <option value="ps5">🎮 PS5</option>
+            <option value="pc">💻 PC</option>
+        </select>
+    </div>
 
-    <button onclick="generarProducto()">
-        🚀 GENERAR BLOQUE PARA productos.js
-    </button>
+    <label for="imagen">Nombre o ruta exacta de la imagen</label>
+    <input type="text" id="imagen" placeholder="Ejemplo: Imagenes/Moda/zapatillas.jpg">
+
+    <label for="plataforma">Plataforma del anuncio</label>
+    <select id="plataforma">
+        <option value="">Selecciona una plataforma</option>
+        <option value="vinted">Vinted</option>
+        <option value="wallapop">Wallapop</option>
+    </select>
+
+    <label for="enlace">Enlace del anuncio</label>
+    <input type="url" id="enlace" placeholder="Pega aquí el enlace público del anuncio">
+
+    <button type="button" onclick="generarProducto()">🚀 GENERAR BLOQUE PARA productos.js</button>
 
     <div class="ayuda">
         <strong>📌 Importante:</strong><br>
-        La imagen debe estar dentro de la carpeta
-        <strong>imagenes/gaming</strong>.
+        Elige la sección y categoría del producto. Si seleccionas Gaming → Juegos, indica también la plataforma. Selecciona Vinted o Wallapop y pega el enlace público del anuncio. La ruta de la imagen debe coincidir exactamente con su ubicación en GitHub.
     </div>
 
+    <label for="resultado">Bloque generado</label>
     <textarea id="resultado" placeholder="Aquí aparecerá el bloque listo para copiar..." readonly></textarea>
-
-    <button class="copiar" onclick="copiarCodigo()">
-        📋 COPIAR BLOQUE
-    </button>
-
-</div>
-
+    <button type="button" class="copiar" onclick="copiarCodigo()">📋 COPIAR BLOQUE</button>
+</main>
 <script>
+const categoria = document.getElementById("categoria");
+const grupoSubcategoria = document.getElementById("grupo-subcategoria");
+const subcategoria = document.getElementById("subcategoria");
+const grupoSeccion = document.getElementById("grupo-seccion");
+const seccion = document.getElementById("seccion");
+const opcionesPorCategoria = {
+    gaming: [
+        ["auriculares", "🎧 Auriculares"],
+        ["mandos", "🎮 Mandos"],
+        ["consolas", "🕹️ Consolas"],
+        ["juegos", "🎮 Juegos"],
+        ["accesorios", "💻 Accesorios"]
+    ],
+    moda: [
+        ["sudaderas", "🧥 Sudaderas"],
+        ["zapatillas", "👟 Zapatillas"],
+        ["ropa", "👕 Ropa"],
+        ["accesorios", "👜 Accesorios"],
+        ["marcas", "🏷️ Marcas"]
+    ],
+    tecnologia: [
+        ["moviles", "📱 Móviles"],
+        ["informatica", "💻 Informática"],
+        ["electronica", "🔌 Electrónica"],
+        ["gadgets", "⌚ Gadgets"],
+        ["accesorios", "🔋 Accesorios"]
+    ]
+};
+
+function actualizarCategorias() {
+    const opciones = opcionesPorCategoria[categoria.value] || [];
+    subcategoria.replaceChildren(new Option("Selecciona una categoría", ""));
+    opciones.forEach(([valor, texto]) => subcategoria.add(new Option(texto, valor)));
+    grupoSubcategoria.hidden = opciones.length === 0;
+    subcategoria.disabled = opciones.length === 0;
+    subcategoria.required = opciones.length > 0;
+    actualizarSeccion();
+}
+
+function actualizarSeccion() {
+    const esJuego = categoria.value === "gaming" && subcategoria.value === "juegos";
+    grupoSeccion.hidden = !esJuego;
+    seccion.disabled = !esJuego;
+    seccion.required = esJuego;
+    if (!esJuego) seccion.value = "";
+}
+
+categoria.addEventListener("change", actualizarCategorias);
+subcategoria.addEventListener("change", actualizarSeccion);
+
+function textoSeguro(valor) {
+    return valor.trim().replaceAll("\\", "\\\\").replaceAll('"', '\\"').replaceAll("\n", " ");
+}
 
 function generarProducto() {
+    const nombre = textoSeguro(document.getElementById("nombre").value);
+    const precio = textoSeguro(document.getElementById("precio").value);
+    const categoriaElegida = categoria.value;
+    const subcategoriaElegida = subcategoria.value;
+    const seccionElegida = seccion.value;
+    const imagen = textoSeguro(document.getElementById("imagen").value);
+    const plataforma = document.getElementById("plataforma").value;
+    const enlace = document.getElementById("enlace").value.trim();
 
-    const nombre = document.getElementById("nombre").value;
-    const precio = document.getElementById("precio").value;
-    const categoria = document.getElementById("categoria").value;
-    const imagen = document.getElementById("imagen").value;
-    const enlace = document.getElementById("enlace").value;
-
-    if (!nombre || !precio || !categoria || !imagen || !enlace) {
+    if (!nombre || !precio || !categoriaElegida || !subcategoriaElegida || !imagen || !plataforma || !enlace) {
         alert("⚠️ Completa todos los campos antes de generar el producto.");
         return;
     }
+    if (categoriaElegida === "gaming" && subcategoriaElegida === "juegos" && !seccionElegida) {
+        alert("⚠️ Selecciona también la plataforma del juego.");
+        return;
+    }
+    if (!/^https?:\/\//i.test(enlace)) {
+        alert("⚠️ Pega el enlace completo del anuncio, empezando por https://");
+        return;
+    }
 
-    const bloque = `    {
-        nombre: "${nombre}",
-        precio: "${precio}",
-        imagen: "${imagen}",
-        enlace: "${enlace}",
-        categoria: "${categoria}"
-    },`;
-
-    document.getElementById("resultado").value = bloque;
+    const campos = [
+        `        nombre: "${nombre}"`,
+        `        precio: "${precio}"`,
+        `        imagen: "${imagen}"`,
+        `        enlace: "${enlace.replaceAll('\\', '\\\\').replaceAll('"', '\\"')}"`,
+        `        plataforma: "${plataforma}"`,
+        `        categoria: "${categoriaElegida}"`,
+        `        subcategoria: "${subcategoriaElegida}"`
+    ];
+    if (categoriaElegida === "gaming" && subcategoriaElegida === "juegos") campos.push(`        seccion: "${seccionElegida}"`);
+    document.getElementById("resultado").value = `    {\n${campos.join(",\n")}\n    },`;
 }
 
-function copiarCodigo() {
-
+async function copiarCodigo() {
     const resultado = document.getElementById("resultado");
-
     if (!resultado.value) {
         alert("⚠️ Primero genera el producto.");
         return;
     }
-
-    resultado.select();
-    document.execCommand("copy");
-
-    alert("✅ Bloque copiado. Ahora puedes pegarlo en productos.js");
+    try {
+        await navigator.clipboard.writeText(resultado.value);
+    } catch {
+        resultado.select();
+        document.execCommand("copy");
+    }
+    alert("✅ Bloque copiado. Pégalo dentro del array productos en productos.js.");
 }
-
 </script>
-
 </body>
 </html>
