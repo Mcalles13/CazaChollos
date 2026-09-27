@@ -110,13 +110,13 @@ plataforma: "vinted",
 categoria: "moda",
 subcategoria: "ropa"
 }
-      {
-        nombre: "Americana caballero XL",
-        precio: "20,00€",
-        imagen: "vinted-americana-crema-20eur.JPG",
-        enlace: "https://www.vinted.es/items/6222209515-americana",
-        plataforma: "vinted",
-        categoria: "moda",
-        subcategoria: "ropa"
+{
+nombre: "Americana caballero XL",
+precio: "20,00€",
+imagen: "vinted-americana-crema-20eur.JPG",
+enlace: "https://www.vinted.es/items/6222209515-americana",
+plataforma: "vinted",
+categoria: "moda",
+subcategoria: "ropa"
     },
 ];
