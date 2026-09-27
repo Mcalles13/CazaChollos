@@ -101,4 +101,13 @@ const productos = [
         categoria: "moda",
         subcategoria: "ropa"
     },
+        {
+        nombre: "Camisa Boston caballero XL",
+        precio: "5,00€",
+        imagen: "vinted-camisa gris boston 5eur.jpeg",
+        enlace: "https://www.vinted.es/items/6222223085-camisa-boston",
+        plataforma: "vinted",
+        categoria: "moda",
+        subcategoria: "ropa"
+    },
 ];
