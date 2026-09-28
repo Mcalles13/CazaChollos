@@ -173,4 +173,13 @@ const productos = [
         categoria: "moda",
         subcategoria: "ropa"
     },
+    {
+        nombre: "Top rojo Bershka",
+        precio: "1,10€",
+        imagen: "zzz-vicky-vinted-top-rojo-dragon-1eur.jpeg",
+        enlace: "https://www.vinted.es/items/7298689050-top-rojo-bershka-con-dragon",
+        plataforma: "vinted",
+        categoria: "moda",
+        subcategoria: "ropa"
+    },
 ];
