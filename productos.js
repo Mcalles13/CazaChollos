@@ -155,4 +155,13 @@ const productos = [
         categoria: "moda",
         subcategoria: "ropa"
     },
+    {
+        nombre: "Sudadera Tommy XL",
+        precio: "5,00€",
+        imagen: "zzz-vinted-inicio-sudadera-tommy-xl-azul-marino-5eur.jpeg",
+        enlace: "https://www.vinted.es/items/10165645173-tommy-hilfiger-sweatshirt-vintage-retro-90s-streetwear?referrer=catalog",
+        plataforma: "vinted",
+        categoria: "moda",
+        subcategoria: "ropa"
+    },
 ];
