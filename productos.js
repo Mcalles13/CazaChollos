@@ -145,5 +145,14 @@ const productos = [
     plataforma: "vinted",
     categoria: "moda",
     subcategoria: "ropa"
-}
+},
+    {
+        nombre: "Pantalón pinzas Zara XL",
+        precio: "5,00€",
+        imagen: "zzz-vinted-pantalon-pinzas-zara-xl-5eur.jpeg",
+        enlace: "https://www.vinted.es/items/6222344472-pantalon-pinzas-zara",
+        plataforma: "vinted",
+        categoria: "moda",
+        subcategoria: "ropa"
+    },
 ];
