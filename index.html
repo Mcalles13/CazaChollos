@@ -118,7 +118,9 @@ footer { margin-top: 40px; background: #111; color: #aaa; text-align: center; pa
 <script src="productos.js"></script>
 <script>
 const contenedorDestacados = document.getElementById("productosDestacados");
-const catalogo = typeof productos !== "undefined" && Array.isArray(productos) ? productos : [];
+const catalogo = typeof productos !== "undefined" && Array.isArray(productos)
+    ? productos.filter((producto) => producto.vendido !== true)
+    : [];
 const destacados = catalogo.filter((producto) => producto.destacado === true).slice(-2);
 const campoBusqueda = document.getElementById("busquedaProductos");
 const resultadosBusqueda = document.getElementById("resultadosBusqueda");
