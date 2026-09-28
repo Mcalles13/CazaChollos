@@ -162,6 +162,6 @@ const productos = [
         enlace: "https://www.vinted.es/items/10165645173-tommy-hilfiger-sweatshirt-vintage-retro-90s-streetwear?referrer=catalog",
         plataforma: "vinted",
         categoria: "moda",
-        subcategoria: "ropa"
+        subcategoria: "sudaderas"
     },
 ];
