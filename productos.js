@@ -119,4 +119,13 @@ const productos = [
     categoria: "moda",
     subcategoria: "ropa"
 }
+    {
+        nombre: "Teclado y ratón Gaming",
+        precio: "15,00€",
+        imagen: "vinted-teclado-y-raton-gaming.jpeg",
+        enlace: "https://www.vinted.es/items/9893755139-teclado-y-raton-gaming-xtrike-me-cmx-301",
+        plataforma: "vinted",
+        categoria: "tecnologia",
+        subcategoria: "accesorios"
+    },
 ];
