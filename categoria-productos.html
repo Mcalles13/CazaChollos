@@ -55,6 +55,7 @@ document.getElementById("descripcion").textContent = "Productos disponibles en C
 const lista = document.getElementById("listaProductos");
 const catalogo = typeof productos !== "undefined" && Array.isArray(productos) ? productos : [];
 const productosFiltrados = catalogo.filter((producto) => {
+    if (producto.vendido === true) return false;
     // Compatibilidad con los juegos PS3 antiguos, que guardaban categoria: "ps3".
     if (categoria === "gaming" && subcategoria === "juegos" && seccion === "ps3" && producto.categoria === "ps3") return true;
     return producto.categoria === categoria && producto.subcategoria === subcategoria && (!seccion || producto.seccion === seccion);
@@ -111,3 +112,4 @@ if (!categoria || !subcategoria) {
 </script>
 </body>
 </html>
+
