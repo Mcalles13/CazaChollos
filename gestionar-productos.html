@@ -12,63 +12,175 @@ header h1 { color: #ffd400; margin: 0 0 8px; }
 main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
 .aviso, .producto { background: white; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
 .aviso { line-height: 1.5; border-left: 5px solid #ffd400; }
+.filtros { background: white; border-radius: 10px; padding: 16px; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+.filtros h2 { font-size: 18px; margin: 0 0 12px; }
+.filtros-categoria { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+button { border: 0; border-radius: 7px; background: #ffd400; color: #111; font-size: 16px; font-weight: bold; cursor: pointer; padding: 11px 15px; }
+button:hover { background: #e6bd00; }
+.filtro-categoria { width: auto; background: #eee; }
+.filtro-categoria.activo { background: #111; color: #ffd400; }
+.filtros-secundarios { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(220px, 2fr); gap: 10px; }
+.filtros select, .filtros input { width: 100%; min-height: 44px; padding: 10px; border: 1px solid #bbb; border-radius: 6px; font-size: 16px; background: white; }
 .producto { display: grid; grid-template-columns: 100px 1fr; gap: 16px; align-items: center; }
 .producto img { width: 100px; height: 100px; object-fit: contain; }
 .producto h2 { font-size: 18px; margin: 0 0 8px; }
+.producto.marcado-vendido { border-left: 5px solid #b3261e; }
+.producto.marcado-vendido h2::after { content: " · VENDIDO"; color: #b3261e; font-size: 14px; }
 .meta { color: #666; font-size: 14px; margin-bottom: 10px; }
 .precio label { display: block; font-weight: bold; margin-bottom: 5px; }
 .precio input { width: min(240px, 100%); padding: 10px; border: 1px solid #bbb; border-radius: 6px; font-size: 16px; }
-.destacar { display: flex; align-items: center; gap: 9px; font-weight: bold; margin-top: 12px; }
-.destacar input { width: 20px; height: 20px; accent-color: #c5a000; }
+.destacar, .vendido { display: flex; align-items: center; gap: 9px; font-weight: bold; margin-top: 12px; }
+.destacar input, .vendido input { width: 20px; height: 20px; accent-color: #c5a000; }
+.destacar input:disabled { opacity: .5; }
+.vendido { color: #8d211b; }
 .acciones { position: sticky; bottom: 0; background: #f4f4f4; padding: 14px 0; }
-button { width: 100%; padding: 14px; border: 0; border-radius: 7px; background: #ffd400; color: #111; font-size: 17px; font-weight: bold; cursor: pointer; }
-button:hover { background: #e6bd00; }
-#contador { text-align: center; font-weight: bold; margin-bottom: 10px; }
+#descargar { width: 100%; padding: 14px; font-size: 17px; }
+#contador { text-align: center; font-weight: bold; margin: 0 0 10px; }
 .vacio { padding: 24px; background: white; border-radius: 10px; text-align: center; }
+@media (max-width: 600px) { .filtros-secundarios { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .producto { grid-template-columns: 70px 1fr; gap: 12px; padding: 14px; } .producto img { width: 70px; height: 70px; } }
 </style>
 </head>
 <body>
 <header>
     <h1>🛒 Gestionar productos</h1>
-    <p>CazaChollos · Actualizar precios y últimos chollos</p>
+    <p>CazaChollos · Precios, destacados y artículos vendidos</p>
 </header>
 <main>
     <div class="aviso">
-        Cambia el precio si lo has rebajado y marca hasta <strong>dos artículos</strong> para la portada. Descarga el TXT, copia todo su contenido dentro del <strong>productos.js</strong> existente en GitHub y guarda los cambios.
+        Elige una categoría para encontrar el artículo. Puedes buscarlo por nombre y filtrar también por subcategoría. Marca hasta <strong>dos artículos</strong> para la portada o marca un artículo como <strong>vendido</strong>. Los vendidos se conservan en el catálogo con la marca <strong>vendido: true</strong>. Al terminar, descarga el TXT, copia todo su contenido en el <strong>productos.js</strong> de GitHub y guarda con <strong>Commit changes</strong>. La web pública debe estar preparada para ocultar los productos vendidos.
     </div>
+
+    <section class="filtros" aria-label="Filtros de productos">
+        <h2>Buscar un producto</h2>
+        <div class="filtros-categoria" id="filtrosCategoria" role="group" aria-label="Filtrar por categoría">
+            <button class="filtro-categoria activo" type="button" data-categoria="">Todos</button>
+            <button class="filtro-categoria" type="button" data-categoria="moda">Moda</button>
+            <button class="filtro-categoria" type="button" data-categoria="gaming">Gaming</button>
+            <button class="filtro-categoria" type="button" data-categoria="tecnologia">Tecnología</button>
+        </div>
+        <div class="filtros-secundarios">
+            <select id="filtroSubcategoria" aria-label="Filtrar por subcategoría" disabled>
+                <option value="">Elige primero una categoría</option>
+            </select>
+            <input id="busquedaProducto" type="search" placeholder="Buscar por nombre, plataforma o categoría" autocomplete="off" aria-label="Buscar productos">
+        </div>
+    </section>
+
     <p id="contador" aria-live="polite"></p>
     <section id="listaProductos"></section>
-    <div class="acciones"><button id="descargar" type="button">Descargar cambios en TXT</button></div>
+    <div class="acciones"><button id="descargar" type="button">Descargar catálogo actualizado en TXT</button></div>
 </main>
 <script src="productos.js"></script>
 <script>
 const lista = document.getElementById("listaProductos");
 const inventario = typeof productos !== "undefined" && Array.isArray(productos) ? productos : [];
+const trabajo = inventario.map((producto) => ({ ...producto }));
 const contador = document.getElementById("contador");
+const filtrosCategoria = document.getElementById("filtrosCategoria");
+const filtroSubcategoria = document.getElementById("filtroSubcategoria");
+const busquedaProducto = document.getElementById("busquedaProducto");
+let categoriaActiva = "";
 
-function actualizarContador() {
-    const marcados = lista.querySelectorAll(".destacar input:checked").length;
-    contador.textContent = `Destacados seleccionados: ${marcados} de 2`;
+function normalizar(valor) {
+    return String(valor || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-function renderizar() {
-    if (inventario.length === 0) {
+function categoriaPrincipal(producto) {
+    return producto.categoria === "ps3" ? "gaming" : (producto.categoria || "");
+}
+
+function subcategoriaProducto(producto) {
+    if (producto.subcategoria) return producto.subcategoria;
+    if (producto.seccion) return producto.seccion;
+    if (producto.categoria === "ps3") return "ps3";
+    return "";
+}
+
+function nombreSubcategoria(valor) {
+    const nombres = { ps3: "PS3", ps4: "PS4", ps5: "PS5", pc: "PC", moviles: "Móviles", informatica: "Informática", electronica: "Electrónica" };
+    return nombres[valor] || (valor ? valor.charAt(0).toUpperCase() + valor.slice(1) : "");
+}
+
+function actualizarSubcategorias() {
+    filtroSubcategoria.replaceChildren();
+    const opcionTodas = document.createElement("option");
+    opcionTodas.value = "";
+    opcionTodas.textContent = categoriaActiva ? "Todas las subcategorías" : "Elige primero una categoría";
+    filtroSubcategoria.appendChild(opcionTodas);
+    filtroSubcategoria.disabled = !categoriaActiva;
+    if (!categoriaActiva) return;
+
+    const valores = [...new Set(trabajo
+        .filter((producto) => categoriaPrincipal(producto) === categoriaActiva)
+        .map(subcategoriaProducto)
+        .filter(Boolean))].sort((a, b) => a.localeCompare(b, "es"));
+    valores.forEach((valor) => {
+        const opcion = document.createElement("option");
+        opcion.value = valor;
+        opcion.textContent = nombreSubcategoria(valor);
+        filtroSubcategoria.appendChild(opcion);
+    });
+}
+
+function productosVisibles() {
+    const consulta = normalizar(busquedaProducto.value.trim());
+    const subcategoriaElegida = filtroSubcategoria.value;
+    return trabajo.map((producto, indice) => ({ producto, indice })).filter(({ producto }) => {
+        if (categoriaActiva && categoriaPrincipal(producto) !== categoriaActiva) return false;
+        if (subcategoriaElegida && subcategoriaProducto(producto) !== subcategoriaElegida) return false;
+        if (!consulta) return true;
+        const campos = [producto.nombre, producto.categoria, producto.subcategoria, producto.seccion, producto.plataforma].filter(Boolean).join(" ");
+        return normalizar(campos).includes(consulta);
+    });
+}
+
+function actualizarContador(cantidadVisible) {
+    const destacados = trabajo.filter((producto) => producto.destacado === true && producto.vendido !== true).length;
+    const vendidos = trabajo.filter((producto) => producto.vendido === true).length;
+    contador.textContent = `Artículos visibles: ${cantidadVisible} de ${trabajo.length} · Destacados activos: ${destacados} de 2 · Vendidos: ${vendidos}`;
+}
+
+function aplicarEstadoTarjeta(tarjeta, producto) {
+    const casillaVendido = tarjeta.querySelector(".vendido input");
+    const casillaDestacado = tarjeta.querySelector(".destacar input");
+    const estaVendido = producto.vendido === true;
+    casillaVendido.checked = estaVendido;
+    casillaDestacado.checked = producto.destacado === true && !estaVendido;
+    casillaDestacado.disabled = estaVendido;
+    tarjeta.classList.toggle("marcado-vendido", estaVendido);
+}
+
+function renderizarLista() {
+    lista.replaceChildren();
+    if (trabajo.length === 0) {
         const vacio = document.createElement("p");
         vacio.className = "vacio";
         vacio.textContent = "No se han encontrado productos. Asegúrate de abrir esta página desde la misma carpeta que productos.js.";
         lista.appendChild(vacio);
-        actualizarContador();
+        actualizarContador(0);
         return;
     }
 
-    inventario.forEach((producto, indice) => {
+    const visibles = productosVisibles();
+    if (visibles.length === 0) {
+        const vacio = document.createElement("p");
+        vacio.className = "vacio";
+        vacio.textContent = "No hay artículos que coincidan con estos filtros.";
+        lista.appendChild(vacio);
+        actualizarContador(0);
+        return;
+    }
+
+    visibles.forEach(({ producto, indice }) => {
         const tarjeta = document.createElement("article");
         tarjeta.className = "producto";
+        tarjeta.dataset.indice = String(indice);
         if (producto.imagen) {
             const imagen = document.createElement("img");
             imagen.src = producto.imagen;
             imagen.alt = producto.nombre || "Imagen del producto";
+            imagen.loading = "lazy";
             tarjeta.appendChild(imagen);
         } else {
             tarjeta.appendChild(document.createElement("div"));
@@ -81,11 +193,11 @@ function renderizar() {
 
         const ruta = [producto.categoria, producto.subcategoria, producto.seccion].filter(Boolean).join(" › ");
         const etiquetasPlataforma = { vinted: "Vinted", wallapop: "Wallapop", otra: "Otra plataforma" };
-        const categoria = document.createElement("p");
-        categoria.className = "meta";
+        const meta = document.createElement("p");
+        meta.className = "meta";
         const nombrePlataforma = etiquetasPlataforma[producto.plataforma] || producto.plataforma;
-        categoria.textContent = `${ruta || "Sin categoría"}${nombrePlataforma ? ` · ${nombrePlataforma}` : ""}`;
-        datos.appendChild(categoria);
+        meta.textContent = `${ruta || "Sin categoría"}${nombrePlataforma ? ` · ${nombrePlataforma}` : ""}`;
+        datos.appendChild(meta);
 
         const precioContenedor = document.createElement("div");
         precioContenedor.className = "precio";
@@ -102,39 +214,89 @@ function renderizar() {
 
         const destacar = document.createElement("label");
         destacar.className = "destacar";
-        const casilla = document.createElement("input");
-        casilla.type = "checkbox";
-        casilla.checked = producto.destacado === true;
-        casilla.dataset.indice = String(indice);
-        const texto = document.createElement("span");
-        texto.textContent = "Mostrar en Últimos chollos";
-        destacar.append(casilla, texto);
+        const casillaDestacado = document.createElement("input");
+        casillaDestacado.type = "checkbox";
+        casillaDestacado.dataset.indice = String(indice);
+        const textoDestacado = document.createElement("span");
+        textoDestacado.textContent = "Mostrar en Últimos chollos";
+        destacar.append(casillaDestacado, textoDestacado);
         datos.appendChild(destacar);
+
+        const vendido = document.createElement("label");
+        vendido.className = "vendido";
+        const casillaVendido = document.createElement("input");
+        casillaVendido.type = "checkbox";
+        casillaVendido.dataset.indice = String(indice);
+        const textoVendido = document.createElement("span");
+        textoVendido.textContent = "Marcar como vendido";
+        vendido.append(casillaVendido, textoVendido);
+        datos.appendChild(vendido);
+
         tarjeta.appendChild(datos);
         lista.appendChild(tarjeta);
+        aplicarEstadoTarjeta(tarjeta, producto);
     });
-
-    lista.addEventListener("change", (evento) => {
-        if (!evento.target.matches(".destacar input")) return;
-        const seleccionadas = [...lista.querySelectorAll(".destacar input:checked")];
-        if (seleccionadas.length > 2) {
-            evento.target.checked = false;
-            alert("Puedes destacar como máximo dos artículos a la vez.");
-        }
-        actualizarContador();
-    });
-    actualizarContador();
+    actualizarContador(visibles.length);
 }
 
+filtrosCategoria.addEventListener("click", (evento) => {
+    const boton = evento.target.closest(".filtro-categoria");
+    if (!boton) return;
+    categoriaActiva = boton.dataset.categoria;
+    filtrosCategoria.querySelectorAll(".filtro-categoria").forEach((elemento) => elemento.classList.toggle("activo", elemento === boton));
+    actualizarSubcategorias();
+    renderizarLista();
+});
+
+filtroSubcategoria.addEventListener("change", renderizarLista);
+busquedaProducto.addEventListener("input", renderizarLista);
+
+lista.addEventListener("input", (evento) => {
+    if (!evento.target.matches(".precio input")) return;
+    const indice = Number(evento.target.dataset.indice);
+    trabajo[indice].precio = evento.target.value;
+});
+
+lista.addEventListener("change", (evento) => {
+    const tarjeta = evento.target.closest(".producto");
+    if (!tarjeta) return;
+    const indice = Number(tarjeta.dataset.indice);
+    const producto = trabajo[indice];
+
+    if (evento.target.matches(".vendido input")) {
+        if (evento.target.checked) {
+            producto.vendido = true;
+            producto.destacado = false;
+        } else {
+            delete producto.vendido;
+        }
+        renderizarLista();
+        return;
+    }
+
+    if (!evento.target.matches(".destacar input")) return;
+    if (evento.target.checked) {
+        const destacadosActivos = trabajo.filter((elemento) => elemento.destacado === true && elemento.vendido !== true).length;
+        if (destacadosActivos >= 2) {
+            evento.target.checked = false;
+            alert("Puedes destacar como máximo dos artículos a la vez.");
+            return;
+        }
+    }
+    producto.destacado = evento.target.checked;
+    actualizarContador(productosVisibles().length);
+});
+
 document.getElementById("descargar").addEventListener("click", () => {
-    if (inventario.length === 0) {
+    if (trabajo.length === 0) {
         alert("No hay productos cargados. Comprueba que productos.js esté junto a esta página.");
         return;
     }
-    const actualizados = inventario.map((producto, indice) => {
-        const precio = document.getElementById(`precio-${indice}`).value.trim();
-        const destacado = lista.querySelector(`.destacar input[data-indice="${indice}"]`).checked;
-        return { ...producto, precio, destacado };
+    const actualizados = trabajo.map((producto) => {
+        const actualizado = { ...producto, precio: String(producto.precio || "").trim() };
+        if (actualizado.vendido === true) actualizado.destacado = false;
+        else delete actualizado.vendido;
+        return actualizado;
     });
     const contenido = `const productos = ${JSON.stringify(actualizados, null, 4)};\n`;
     const archivo = new Blob([contenido], { type: "text/plain;charset=utf-8" });
@@ -144,10 +306,11 @@ document.getElementById("descargar").addEventListener("click", () => {
     enlace.download = "productos-actualizado.txt";
     enlace.click();
     URL.revokeObjectURL(url);
-    alert("TXT descargado. Ábrelo con el Bloc de notas, copia todo su contenido y pégalo en el productos.js existente de GitHub. Después guarda con Commit changes.");
+    alert("TXT descargado. Copia todo su contenido en productos.js en GitHub y guarda con Commit changes. Los artículos vendidos se conservan marcados como vendido: true.");
 });
 
-renderizar();
+actualizarSubcategorias();
+renderizarLista();
 </script>
 </body>
 </html>
