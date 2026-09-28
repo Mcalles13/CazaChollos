@@ -164,4 +164,13 @@ const productos = [
         categoria: "moda",
         subcategoria: "sudaderas"
     },
+    {
+        nombre: "Camisa Ralph Lauren niño T7",
+        precio: "15,00€",
+        imagen: "zzz-jeza-wallapop-camisa-ralph-lauren-niño-t7-15eur.jpeg",
+        enlace: "https://es.wallapop.com/item/ralph-lauren-camisa-nino-587849989",
+        plataforma: "wallapop",
+        categoria: "moda",
+        subcategoria: "ropa"
+    },
 ];
