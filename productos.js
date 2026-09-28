@@ -118,7 +118,7 @@ const productos = [
     plataforma: "vinted",
     categoria: "moda",
     subcategoria: "ropa"
-}
+},
     {
         nombre: "Teclado y ratón Gaming",
         precio: "15,00€",
