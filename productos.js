@@ -1,4 +1,3 @@
-```javascript
 const productos = [
 {
     nombre: "Kung Fu Panda PS3",
@@ -106,4 +105,18 @@ const productos = [
     nombre: "Camiseta Nike Chica XS",
     precio: "10,00€",
     imagen: "vinted-camiseta nike chica.jpeg",
-    enlace: "https://www.vinted.es/items/6222300531
+    enlace: "https://www.vinted.es/items/6222300531-camiseta-chica-nike",
+    plataforma: "vinted",
+    categoria: "moda",
+    subcategoria: "ropa"
+},
+{
+    nombre: "Camisa Boston caballero XL",
+    precio: "5,00€",
+    imagen: "vinted-camisa gris boston 5eur.jpeg",
+    enlace: "https://www.vinted.es/items/6222223085-camisa-boston",
+    plataforma: "vinted",
+    categoria: "moda",
+    subcategoria: "ropa"
+}
+];
