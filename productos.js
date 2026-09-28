@@ -174,7 +174,7 @@ const productos = [
         subcategoria: "ropa"
     },
     {
-        nombre: "Top rojo Bershka",
+        nombre: "Top rojo Bershka M/38/10",
         precio: "1,10€",
         imagen: "zzz-vicky-vinted-top-rojo-dragon-1eur.jpeg",
         enlace: "https://www.vinted.es/items/7298689050-top-rojo-bershka-con-dragon",
